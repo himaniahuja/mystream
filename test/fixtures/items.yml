@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category: 1
+  title: MyString
+  description: MyString
+  location: MyString
+  condition: 1
+  rental_price: 1
+  deposit: 1
+  schedule: 2012-06-21
+
+two:
+  category: 1
+  title: MyString
+  description: MyString
+  location: MyString
+  condition: 1
+  rental_price: 1
+  deposit: 1
+  schedule: 2012-06-21

@@ -34,3 +34,4 @@ end
 
 gem 'authlogic'
 gem 'dynamic_form'
+gem 'simple_enum'
