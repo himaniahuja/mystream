@@ -1,4 +1,4 @@
-Ishare::Application.routes.draw do
+	Ishare::Application.routes.draw do
   resources :items
 
   get "user_sessions/new"
@@ -12,6 +12,8 @@ Ishare::Application.routes.draw do
   resource :user, :as => 'account'  # a convenience route
 
   match 'signup' => 'users#new', :as => :signup
+
+  match 'items/:id', :controller => 'items', :action => 'show'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

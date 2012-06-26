@@ -1,0 +1,45 @@
+<div id="topbar">
+	<div id="leftnav">
+		<a href="index.html"><img alt="home" src="/images/home.png" /></a>
+	</div>
+</div>
+
+<div id="detail">
+  <p id="notice"><%= notice %></p>
+
+   <p>
+	  <h2>
+		 <%= @item.title %>
+	  </h2>
+	  <%= @item.description %>
+   </p>
+
+   <p>
+	  <%= image_tag @item.photo.url(:small) %>
+   </p>
+   <p>
+	 <b>Category:</b>
+	 <%= @item.category %>
+   </p>
+
+   <p>
+	 <b>Price:</b>
+	 <%= @item.rental_price %>
+   </p>
+   <p>
+	 <b>Condition:</b>
+	 <%= @item.condition %>
+   </p>
+   <p>
+	 <b>From:</b>  <%= @item.schedule_from %>
+   </p>
+   <p>
+	 <b>To:</b>
+	 <%= @item.schedule_to %>
+   </p>
+   <p>
+	 <b>Posted By:</b>
+	 <%= @item.user.email %>
+   </p>
+
+  </div>

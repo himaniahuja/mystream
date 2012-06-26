@@ -14,7 +14,7 @@ $(function() {
 	</div>
 </div>
 <div id="content">
-	<%= form_for @item, :url => {:action => "create"} do |f| %>
+	<%= form_for @item,:html => { :multipart => true }, :url => {:action => "create"} do |f| %>
 		<span class="graytitle">Category</span>
 		<ul class="pageitem">
 			<li class="select">
@@ -28,6 +28,10 @@ $(function() {
 				<%= f.select :condition, options_for_select({"95%" => 95, "90%" => 90},
 					:selected => @item[:condition]) %>
 			</li>
+		</ul>
+		</ul>
+  			<%= f.label 'Photo' %><br />
+  			<%= f.file_field :photo %>
 		</ul>
 		<ul class="pageitem">
 			<li class="smallfield"><span class="name">Title</span><%= f.text_field :title, :placeholder=>"Title" %><br />
