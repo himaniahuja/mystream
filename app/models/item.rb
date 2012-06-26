@@ -12,15 +12,9 @@ class Item < ActiveRecord::Base
     	:medium => "300x300>",
     	:large =>   "400x400>" }
 
-  		# in order to store pictures on the app.
-        #http://railscasts.com/episodes/134-paperclip
-  		#:url  => "/items/:id/:style/:basename.:extension",
-		#:path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
-
-  	#validates_attachment_presence :photo
-	#validates_attachment_size :photo, :less_than => 5.megabytes
-	#validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
-
-
+		# for future
+		#validates_attachment_presence :photo
+		#validates_attachment_size :photo, :less_than => 5.megabytes
+		#validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
 end
