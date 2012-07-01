@@ -128,7 +128,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.0)
   dynamic_form
   jquery-rails
-  paperclip
+  paperclip (~> 3.0)
   rails (= 3.1.0)
   sass-rails (~> 3.1.0)
   simple_enum

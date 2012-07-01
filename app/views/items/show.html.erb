@@ -4,42 +4,17 @@
 	</div>
 </div>
 
-<div id="detail">
-  <p id="notice"><%= notice %></p>
-
-   <p>
-	  <h2>
-		 <%= @item.title %>
-	  </h2>
-	  <%= @item.description %>
-   </p>
-
-   <p>
-	  <%= image_tag @item.photo.url(:small) %>
-   </p>
-   <p>
-	 <b>Category:</b>
-	 <%= @item.category %>
-   </p>
-
-   <p>
-	 <b>Price:</b>
-	 <%= @item.rental_price %>
-   </p>
-   <p>
-	 <b>Condition:</b>
-	 <%= @item.condition %>
-   </p>
-   <p>
-	 <b>From:</b>  <%= @item.schedule_from %>
-   </p>
-   <p>
-	 <b>To:</b>
-	 <%= @item.schedule_to %>
-   </p>
-   <p>
-	 <b>Posted By:</b>
-	 <%= @item.user.email %>
-   </p>
-
-</div>
+<div id="content">
+	<ul class="pageitem">
+		<li><%= image_tag @item.avatar.url %></li>
+		<li>Title: <%= @item.title %></li>
+		<li>Category: <%= parse_category @item.category %></li>
+		<li>Description: <%= @item.description %></li>
+		<li>Location: <%= @item.location %></li>
+		<li>Condition: <%= parse_condition(@item.condition) %></li>
+		<li>Rental Price: <%= @item.rental_price %></li>
+		<li>Deposit: <%= @item.deposit %></li>
+		<li>From: <%= @item.schedule_from %></li>
+		<li>To: <%= @item.schedule_to %></li>
+	</ul>
+<div>
