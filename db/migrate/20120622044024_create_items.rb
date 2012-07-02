@@ -11,6 +11,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :deposit
       t.date :schedule_from
       t.date :schedule_to
+      t.has_attached_file :avatar
 
       t.timestamps
     end

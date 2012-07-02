@@ -1,25 +1,21 @@
 class ItemsController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
+  
+  def index
+    @items = Item.all
+  end
+  
+  def show
+    @item = Item.find(params[:id])
+  end
 
   def new
     @item = Item.new
-    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item }
-    end
-  end
-
-   def show
-	@item = Item.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-
   end
 
   def create
     @item = Item.new(params[:item])
+<<<<<<< HEAD
 	@item.user = current_user
 
 	respond_to do |format|
@@ -30,5 +26,14 @@ class ItemsController < ApplicationController
        end
 	end
 
+=======
+    @item.user = current_user
+    
+    if @item.save
+      redirect_to :action => :index
+    else
+      render :action => :new
+    end
+>>>>>>> fc176ba02a42b363a02d5a992f337cc101a468a9
   end
 end

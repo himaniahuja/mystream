@@ -18,8 +18,6 @@ end
 
 gem 'jquery-rails'
 
-gem "paperclip"
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -37,3 +35,4 @@ end
 gem 'authlogic'
 gem 'dynamic_form'
 gem 'simple_enum'
+gem "paperclip", "~> 3.0"
