@@ -15702,3 +15702,686 @@ ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   
 
 Rendered /Users/wenjunzheng/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120620024657)
+Migrating to CreateUserSessions (20120620034114)
+Migrating to CreateItems (20120622044024)
+  [1m[35m (0.8ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("items")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("sessions")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_sessions_on_updated_at')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_persistence_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_login')[0m
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120620024657)
+Migrating to CreateUserSessions (20120620034114)
+Migrating to CreateItems (20120622044024)
+  [1m[35m (0.4ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("items")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("sessions")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_sessions_on_updated_at')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_persistence_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_login')[0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-07-03 00:51:14 -0700
+
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (20.2ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-07-03 00:51:15 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2012-07-03 00:51:21 -0700
+  Processing by UserSessionsController#new as HTML
+ApplicationController::require_no_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+Rendered user_sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 206ms (Views: 8.7ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/user_sessions" for 127.0.0.1 at 2012-07-03 00:51:51 -0700
+  Processing by UserSessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZDdd6/5XYKSuc48VV2sSRvviISJPqdQab9zyKLhdrh0=", "user_session"=>{"login"=>"surbhi.dangi", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+ApplicationController::require_no_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (18.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users".login LIKE 'surbhi.dangi') LIMIT 1[0m
+Rendered user_sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 78ms (Views: 7.8ms | ActiveRecord: 19.2ms)
+
+
+Started GET "/index.html" for 127.0.0.1 at 2012-07-03 00:51:58 -0700
+
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2012-07-03 00:52:03 -0700
+  Processing by UsersController#new as HTML
+ApplicationController::require_no_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+Rendered users/new.html.erb within layouts/application (47.4ms)
+Completed 200 OK in 56ms (Views: 52.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-07-03 00:52:19 -0700
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZDdd6/5XYKSuc48VV2sSRvviISJPqdQab9zyKLhdrh0=", "user"=>{"login"=>"surbhidangi", "email"=>"surbhi.dangi@sv.cmu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Register"}
+ApplicationController::require_no_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35m (17.5ms)[0m  SELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('surbhi.dangi@sv.cmu.edu') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE LOWER("users"."login") = LOWER('surbhidangi') LIMIT 1[0m
+  [1m[35m (21.6ms)[0m  SELECT 1 FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mSQL (39.1ms)[0m  [1mINSERT INTO "users" ("created_at", "crypted_password", "current_login_at", "current_login_ip", "email", "failed_login_count", "last_login_at", "last_login_ip", "last_request_at", "login", "login_count", "password_salt", "persistence_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 03 Jul 2012 07:52:20 UTC +00:00], ["crypted_password", "56fb0109b839df5939b6d53089e9d22e65de8d4beac7d864b5dd4d70c097047e92bc1a508e91015dd97af247c8961c1e68fe6242830057322f5c2814cbb97647"], ["current_login_at", Tue, 03 Jul 2012 07:52:20 UTC +00:00], ["current_login_ip", "127.0.0.1"], ["email", "surbhi.dangi@sv.cmu.edu"], ["failed_login_count", 0], ["last_login_at", nil], ["last_login_ip", nil], ["last_request_at", Tue, 03 Jul 2012 07:52:20 UTC +00:00], ["login", "surbhidangi"], ["login_count", 1], ["password_salt", "z68bBRk7rV96meCI2s2d"], ["persistence_token", "12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13"], ["updated_at", Tue, 03 Jul 2012 07:52:20 UTC +00:00]]
+Redirected to http://localhost:3000/signup
+Completed 302 Found in 303ms
+
+
+Started GET "/signup" for 127.0.0.1 at 2012-07-03 00:52:20 -0700
+  Processing by UsersController#new as HTML
+ApplicationController::require_no_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 07:52:20.228807', "updated_at" = '2012-07-03 07:52:20.229069' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+Redirected to http://localhost:3000/user
+Completed 302 Found in 95ms
+
+
+Started GET "/user" for 127.0.0.1 at 2012-07-03 00:52:20 -0700
+  Processing by UsersController#show as HTML
+ApplicationController::require_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mUPDATE "users" SET "last_request_at" = '2012-07-03 07:52:20.309016', "updated_at" = '2012-07-03 07:52:20.309286' WHERE "users"."id" = 2[0m
+ApplicationController::current_user_session
+ApplicationController::current_user
+Completed 500 Internal Server Error in 81ms
+
+ActionView::MissingTemplate (Missing template users/show, application/show with {:handlers=>[:erb, :builder, :coffee], :formats=>[:html], :locale=>[:en, :en]}. Searched in:
+  * "/Users/Surbhi/RubymineProjects/CMU-PieShare/app/views"
+):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-07-03 00:52:30 -0700
+
+AbstractController::ActionNotFound (The action 'index' could not be found for UsersController):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2012-07-03 00:52:39 -0700
+  Processing by UserSessionsController#new as HTML
+ApplicationController::require_no_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 07:52:39.934362', "updated_at" = '2012-07-03 07:52:39.934796' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+Redirected to http://localhost:3000/user
+Completed 302 Found in 111ms
+
+
+Started GET "/user" for 127.0.0.1 at 2012-07-03 00:52:39 -0700
+  Processing by UsersController#show as HTML
+ApplicationController::require_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mUPDATE "users" SET "last_request_at" = '2012-07-03 07:52:40.082830', "updated_at" = '2012-07-03 07:52:40.083093' WHERE "users"."id" = 2[0m
+ApplicationController::current_user_session
+ApplicationController::current_user
+Completed 500 Internal Server Error in 26ms
+
+ActionView::MissingTemplate (Missing template users/show, application/show with {:handlers=>[:erb, :builder, :coffee], :formats=>[:html], :locale=>[:en, :en]}. Searched in:
+  * "/Users/Surbhi/RubymineProjects/CMU-PieShare/app/views"
+):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2012-07-03 00:52:45 -0700
+  Processing by UserSessionsController#new as HTML
+ApplicationController::require_no_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 07:52:45.666741', "updated_at" = '2012-07-03 07:52:45.667001' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+Redirected to http://localhost:3000/user
+Completed 302 Found in 78ms
+
+
+Started GET "/user" for 127.0.0.1 at 2012-07-03 00:52:45 -0700
+  Processing by UsersController#show as HTML
+ApplicationController::require_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mUPDATE "users" SET "last_request_at" = '2012-07-03 07:52:45.771145', "updated_at" = '2012-07-03 07:52:45.771580' WHERE "users"."id" = 2[0m
+ApplicationController::current_user_session
+ApplicationController::current_user
+Completed 500 Internal Server Error in 29ms
+
+ActionView::MissingTemplate (Missing template users/show, application/show with {:handlers=>[:erb, :builder, :coffee], :formats=>[:html], :locale=>[:en, :en]}. Searched in:
+  * "/Users/Surbhi/RubymineProjects/CMU-PieShare/app/views"
+):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2012-07-03 00:52:51 -0700
+
+ActionController::RoutingError (No route matches [GET] "/signin"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/login/1" for 127.0.0.1 at 2012-07-03 00:52:56 -0700
+
+ActionController::RoutingError (No route matches [GET] "/login/1"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2012-07-03 00:53:03 -0700
+
+ActionController::RoutingError (No route matches [GET] "/signin"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/user_sessions" for 127.0.0.1 at 2012-07-03 00:53:12 -0700
+
+AbstractController::ActionNotFound (The action 'index' could not be found for UserSessionsController):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started GET "/index.html" for 127.0.0.1 at 2012-07-03 00:53:18 -0700
+
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-07-03 00:53:21 -0700
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZDdd6/5XYKSuc48VV2sSRvviISJPqdQab9zyKLhdrh0=", "user"=>{"login"=>"surbhidangi", "email"=>"surbhi.dangi@sv.cmu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Register"}
+ApplicationController::require_no_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 07:53:21.331815', "updated_at" = '2012-07-03 07:53:21.332057' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+Redirected to http://localhost:3000/user
+Completed 302 Found in 60ms
+
+
+Started GET "/user" for 127.0.0.1 at 2012-07-03 00:53:21 -0700
+  Processing by UsersController#show as HTML
+ApplicationController::require_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_request_at" = '2012-07-03 07:53:21.411042', "updated_at" = '2012-07-03 07:53:21.411284' WHERE "users"."id" = 2[0m
+ApplicationController::current_user_session
+ApplicationController::current_user
+Completed 500 Internal Server Error in 75ms
+
+ActionView::MissingTemplate (Missing template users/show, application/show with {:handlers=>[:erb, :builder, :coffee], :formats=>[:html], :locale=>[:en, :en]}. Searched in:
+  * "/Users/Surbhi/RubymineProjects/CMU-PieShare/app/views"
+):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2012-07-03 00:54:06 -0700
+  Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" 
+Rendered items/index.html.erb within layouts/application (17.3ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 00:54:09 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (32.3ms)
+Completed 200 OK in 112ms (Views: 110.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2012-07-03 00:56:45 -0700
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+ApplicationController::require_user
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (24.6ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 07:56:45.486307', "updated_at" = '2012-07-03 07:56:45.486560' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+ApplicationController::current_user
+Completed 500 Internal Server Error in 51ms
+
+ActionView::MissingTemplate (Missing template users/edit, application/edit with {:handlers=>[:erb, :builder, :coffee], :formats=>[:html], :locale=>[:en, :en]}. Searched in:
+  * "/Users/Surbhi/RubymineProjects/CMU-PieShare/app/views"
+):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started GET "/items/1/edit" for 127.0.0.1 at 2012-07-03 00:57:12 -0700
+  Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (1.0ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 07:57:12.296511', "updated_at" = '2012-07-03 07:57:12.296895' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+Rendered items/_form_edit.html.erb (5.5ms)
+Rendered items/edit.html.erb within layouts/application (71.3ms)
+Completed 200 OK in 360ms (Views: 75.3ms | ActiveRecord: 2.1ms)
+
+
+Started PUT "/items/1" for 127.0.0.1 at 2012-07-03 00:57:19 -0700
+  Processing by ItemsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZDdd6/5XYKSuc48VV2sSRvviISJPqdQab9zyKLhdrh0=", "item"=>{"category"=>"2", "condition"=>"1", "title"=>"", "description"=>"panda", "rental_price"=>"3000", "deposit"=>"800000", "location"=>"China", "schedule_from"=>"2012-07-02", "schedule_to"=>"2013-07-31"}, "commit"=>"Update", "id"=>"1"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 07:57:19.426393', "updated_at" = '2012-07-03 07:57:19.426795' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+Rendered items/_form_edit.html.erb (5.4ms)
+Rendered items/edit.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 77ms (Views: 11.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2012-07-03 00:57:24 -0700
+  Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" [0m
+Rendered items/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 21ms (Views: 19.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 00:57:27 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 96ms (Views: 94.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2012-07-03 00:58:45 -0700
+  Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" [0m
+Rendered items/index.html.erb within layouts/application (46.6ms)
+Completed 200 OK in 54ms (Views: 51.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/storelist.html" for 127.0.0.1 at 2012-07-03 00:58:57 -0700
+
+ActionController::RoutingError (No route matches [GET] "/storelist.html"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/classiclist.html" for 127.0.0.1 at 2012-07-03 00:59:02 -0700
+
+ActionController::RoutingError (No route matches [GET] "/classiclist.html"):
+  
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 00:59:07 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (6.0ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (44.4ms)
+Completed 200 OK in 58ms (Views: 50.2ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:10:05 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (204.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 253ms (Views: 45.5ms | ActiveRecord: 204.5ms)
+
+
+Started GET "/items/edit.html" for 127.0.0.1 at 2012-07-03 01:10:13 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"edit"}
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "edit"]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Item with id=edit):
+  app/controllers/items_controller.rb:9:in `show'
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.7ms)
+
+
+Started GET "/items/edit.html" for 127.0.0.1 at 2012-07-03 01:10:19 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"edit"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "edit"]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Item with id=edit):
+  app/controllers/items_controller.rb:9:in `show'
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.6ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:18:01 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.6ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (102.0ms)
+Completed 500 Internal Server Error in 110ms
+
+ActionView::Template::Error (undefined method `edit_path' for #<#<Class:0x007fe78aba0ff8>:0x007fe78ab8fb40>):
+    3: 		<a href="index.html"><img alt="home" src="/images/home.png" /></a>
+    4: 	</div>
+    5: 	<div id="rightnav">
+    6: 		<%= link_to 'Edit', edit_path(@item) %>
+    7: 		<a href="edit.html"><img alt="Edit"/></a>
+    8: </div>
+    9: 
+  app/views/items/show.html.erb:6:in `_app_views_items_show_html_erb__375272680548468941_70316220764680'
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.8ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2012-07-03 01:18:17 -0700
+  Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" [0m
+Rendered items/index.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 40ms (Views: 38.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2012-07-03 01:23:05 -0700
+  Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.9ms)[0m  SELECT "items".* FROM "items" 
+Rendered items/index.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 33ms (Views: 30.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:23:08 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 26ms (Views: 24.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/items/1/edit" for 127.0.0.1 at 2012-07-03 01:23:10 -0700
+  Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (29.9ms)[0m  [1mUPDATE "users" SET "last_request_at" = '2012-07-03 08:23:10.662282', "updated_at" = '2012-07-03 08:23:10.662837' WHERE "users"."id" = 2[0m
+ApplicationController::current_user_session
+Rendered items/_form_edit.html.erb (5.1ms)
+Rendered items/edit.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 238ms (Views: 12.1ms | ActiveRecord: 32.5ms)
+
+
+Started PUT "/items/1" for 127.0.0.1 at 2012-07-03 01:23:17 -0700
+  Processing by ItemsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZDdd6/5XYKSuc48VV2sSRvviISJPqdQab9zyKLhdrh0=", "item"=>{"category"=>"2", "condition"=>"1", "title"=>"", "description"=>"", "rental_price"=>"3000", "deposit"=>"800000", "location"=>"China", "schedule_from"=>"2012-07-02", "schedule_to"=>"2013-07-31"}, "commit"=>"Update", "id"=>"1"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mUPDATE "users" SET "last_request_at" = '2012-07-03 08:23:18.070477', "updated_at" = '2012-07-03 08:23:18.070747' WHERE "users"."id" = 2[0m
+ApplicationController::current_user_session
+Rendered items/_form_edit.html.erb (8.1ms)
+Rendered items/edit.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 230ms (Views: 15.1ms | ActiveRecord: 1.5ms)
+
+
+Started PUT "/items/1" for 127.0.0.1 at 2012-07-03 01:23:34 -0700
+  Processing by ItemsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZDdd6/5XYKSuc48VV2sSRvviISJPqdQab9zyKLhdrh0=", "item"=>{"category"=>"2", "condition"=>"1", "title"=>"", "description"=>"", "rental_price"=>"3000", "deposit"=>"800000", "location"=>"China", "schedule_from"=>"2012-07-02", "schedule_to"=>"2013-07-31", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fe78ad5cce8 @original_filename="1a.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"item[avatar]\"; filename=\"1a.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/var/folders/hh/ztr0vyvs0576v7td_gfhy4th0000gn/T/RackMultipart20120703-13085-1uv0r95>>}, "commit"=>"Update", "id"=>"1"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mUPDATE "users" SET "last_request_at" = '2012-07-03 08:23:34.364567', "updated_at" = '2012-07-03 08:23:34.364827' WHERE "users"."id" = 2[0m
+ApplicationController::current_user_session
+[32mCommand[0m :: identify -format %wx%h '/var/folders/hh/ztr0vyvs0576v7td_gfhy4th0000gn/T/1a20120703-13085-1gb9pe8.jpg[0]'
+[paperclip] An error was received while processing: #<Paperclip::Errors::CommandNotFoundError: Could not run the `identify` command. Please install ImageMagick.>
+Rendered items/_form_edit.html.erb (7.2ms)
+Rendered items/edit.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 832ms (Views: 13.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:23:49 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (25.6ms)
+Completed 200 OK in 54ms (Views: 51.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/items/edit.html" for 127.0.0.1 at 2012-07-03 01:23:54 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"edit"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "edit"]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find Item with id=edit):
+  app/controllers/items_controller.rb:9:in `show'
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.6ms)
+
+
+Started GET "/items/edit.html" for 127.0.0.1 at 2012-07-03 01:24:00 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"edit"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "edit"]]
+Completed 404 Not Found in 4ms
+
+ActiveRecord::RecordNotFound (Couldn't find Item with id=edit):
+  app/controllers/items_controller.rb:9:in `show'
+
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /Users/Surbhi/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.8ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:24:03 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:24:06 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (132.6ms)
+Completed 200 OK in 143ms (Views: 139.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:24:22 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/items/1/edit" for 127.0.0.1 at 2012-07-03 01:24:34 -0700
+  Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (19.0ms)[0m  [1mUPDATE "users" SET "last_request_at" = '2012-07-03 08:24:34.122833', "updated_at" = '2012-07-03 08:24:34.123381' WHERE "users"."id" = 2[0m
+ApplicationController::current_user_session
+Rendered items/_form_edit.html.erb (3.9ms)
+Rendered items/edit.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 120ms (Views: 8.6ms | ActiveRecord: 20.2ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:25:24 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 23ms (Views: 19.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/items/1/edit" for 127.0.0.1 at 2012-07-03 01:25:27 -0700
+  Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 08:25:27.652203', "updated_at" = '2012-07-03 08:25:27.652613' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+Rendered items/_form_edit.html.erb (4.2ms)
+Rendered items/edit.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 209ms (Views: 9.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2012-07-03 01:25:35 -0700
+  Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" [0m
+Rendered items/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 41ms (Views: 39.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:25:37 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/items/1/edit" for 127.0.0.1 at 2012-07-03 01:25:39 -0700
+  Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 08:25:39.934614', "updated_at" = '2012-07-03 08:25:39.934876' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+Rendered items/_form_edit.html.erb (6.5ms)
+Rendered items/edit.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 120ms (Views: 13.5ms | ActiveRecord: 1.5ms)
+
+
+Started PUT "/items/1" for 127.0.0.1 at 2012-07-03 01:25:44 -0700
+  Processing by ItemsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZDdd6/5XYKSuc48VV2sSRvviISJPqdQab9zyKLhdrh0=", "item"=>{"category"=>"2", "condition"=>"2", "title"=>"Panda", "description"=>"panda", "rental_price"=>"3000", "deposit"=>"800000", "location"=>"China", "schedule_from"=>"2012-07-02", "schedule_to"=>"2013-07-31"}, "commit"=>"Update", "id"=>"1"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+ApplicationController::current_user
+ApplicationController::current_user_session
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."persistence_token" = '12e21afff34dad39bc5c11f53d37ea624eb1069a8faa6c852b4ad7fae93aac2e99a143649abf4d015acb94d7b25d71cc72390243cbb7486830b1cb3112097a13' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_request_at" = '2012-07-03 08:25:44.661838', "updated_at" = '2012-07-03 08:25:44.662118' WHERE "users"."id" = 2
+ApplicationController::current_user_session
+  [1m[36m (0.3ms)[0m  [1mUPDATE "items" SET "user" = 2, "condition" = 2, "updated_at" = '2012-07-03 08:25:44.762561' WHERE "items"."id" = 1[0m
+[paperclip] Saving attachments.
+Redirected to http://localhost:3000/items/1
+Completed 302 Found in 176ms
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:25:44 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (46.4ms)
+Completed 200 OK in 52ms (Views: 50.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:27:19 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 26ms (Views: 24.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2012-07-03 01:35:38 -0700
+  Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered items/show.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 22ms (Views: 18.8ms | ActiveRecord: 0.7ms)

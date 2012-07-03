@@ -18,8 +18,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "There was a problem creating you."
       render :action => :new
-    end
-    
+    end    
   end
 
   def show
