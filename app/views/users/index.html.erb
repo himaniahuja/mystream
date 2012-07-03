@@ -1,0 +1,37 @@
+<div id="topbar">
+	<div id="leftnav">
+		<a href="http://localhost:3000/index"><img alt="home" src="/images/home.png" /></a>
+	</div>
+	<div id="rightnav">
+		<%= link_to 'Edit', edit_user_path(@user) %>
+		</div>
+</div>
+
+
+<div id="content">
+	<span class="graytitle">View Profile</span>
+	<div class = "itemdetail" >
+	 <ul class="pageitem">
+			<div class = "itemhighlight" >
+		    	<li>
+			  		<h3><%= @user.login %></h3>
+				</li>
+			</div>
+			<li>
+		   	  <i>
+			  	<%= @user.email %>
+		   	  </i>
+		    </li>
+
+			</br>
+		</ul>
+
+		<ul class="pageitem">
+			<span class="name">
+				<%= link_to 'Browse Items', items_path %>
+			</span>
+		</ul>
+
+	  </div>
+
+</div>

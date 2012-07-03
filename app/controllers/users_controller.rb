@@ -22,20 +22,22 @@ class UsersController < ApplicationController
   end
 
   def show
+    # @user = User.find(params[:id])
     @user = current_user
   end
 
+  # GET /users/1/edit
   def edit
     @user = current_user
   end
 
+  # PUT /users/1
   def update
     @user = current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
-      redirect_to account_url
+      format.html {redirect_to(@user, :notice => 'Successfully updated.') }
     else
-      render :action => :edit
+      format.html { render :action => :edit }
     end
   end
 end

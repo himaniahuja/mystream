@@ -9,9 +9,9 @@ Ishare::Application.routes.draw do
   match 'logout' => "user_sessions#destroy", :as => :logout
   
   resources :users  # give us our some normal resource routes for users
-  resource :user, :as => 'account'  # a convenience route
+  # resource :user, :as => 'account'  # a convenience route
   resources :items
-
+  
   match 'signup' => 'users#new', :as => :signup
   
   # The priority is based upon order of creation:
