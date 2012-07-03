@@ -15,18 +15,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params[:item])
-<<<<<<< HEAD
-	@item.user = current_user
-
-	respond_to do |format|
-       if @item.save
-     	 format.html { redirect_to @item, notice: 'Item was successfully created.' }
-       else
-      	 format.html { render action: "new" }
-       end
-	end
-
-=======
     @item.user = current_user
     
     if @item.save
@@ -34,6 +22,27 @@ class ItemsController < ApplicationController
     else
       render :action => :new
     end
->>>>>>> fc176ba02a42b363a02d5a992f337cc101a468a9
   end
+
+  # GET /items/1/edit
+  def edit
+    @item = Item.find(params[:id])
+	@item.user = current_user
+  end
+
+  # PUT /items/1
+  def update
+    @item = Item.find(params[:id])
+
+	@item.user = current_user
+    respond_to do |format|
+      if @item.update_attributes(params[:item])
+        format.html { redirect_to(@item, :notice => 'Successfully updated.') }
+       else
+        format.html { render :action => "edit" }
+       end
+    end
+  end
+
+
 end

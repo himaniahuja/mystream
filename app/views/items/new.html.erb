@@ -19,6 +19,10 @@ $(function() {
 	<%= form_for @item, :url => {:action => "create"} do |f| %>
 		<span class="graytitle">Category</span>
 		<ul class="pageitem">
+			<li class="textbox"><%= f.error_messages %></li>
+		</ul>
+
+		<ul class="pageitem">
 			<li class="select">
 				<%= f.select :category, options_for_select({"car" => 1, "boat" => 2},
 				 	:selected => @item[:category]) %>
@@ -31,14 +35,6 @@ $(function() {
 					:selected => @item[:condition]) %>
 			</li>
 		</ul>
-<<<<<<< HEAD
-		</ul class="pageitem">
-			<%= f.label 'Upload Photo' %><br />
-  			<%= f.file_field :photo %>
-
-		</ul>
-=======
->>>>>>> fc176ba02a42b363a02d5a992f337cc101a468a9
 		<ul class="pageitem">
 			<li class="smallfield"><span class="name">Title</span><%= f.text_field :title, :placeholder=>"Title" %><br />
 			<li class="smallfield"><span class="name">Description</span><%= f.text_field :description, :placeholder=>"Desc" %><br />
@@ -51,9 +47,7 @@ $(function() {
 			<li class="button"><%= f.submit "Create" %></li>
 		</ul>
 	
-		<ul class="pageitem">
-			<li class="textbox"><%= f.error_messages %></li>
-		</ul>
+
 	<% end %>
 </div>
 

@@ -5,16 +5,58 @@
 </div>
 
 <div id="content">
-	<ul class="pageitem">
-		<li><%= image_tag @item.avatar.url %></li>
-		<li>Title: <%= @item.title %></li>
-		<li>Category: <%= parse_category @item.category %></li>
-		<li>Description: <%= @item.description %></li>
-		<li>Location: <%= @item.location %></li>
-		<li>Condition: <%= parse_condition(@item.condition) %></li>
-		<li>Rental Price: <%= @item.rental_price %></li>
-		<li>Deposit: <%= @item.deposit %></li>
-		<li>From: <%= @item.schedule_from %></li>
-		<li>To: <%= @item.schedule_to %></li>
-	</ul>
-<div>
+	<div class = "itemdetail" >
+	 <ul class="pageitem">
+			<% if @item.avatar_file_name != nil %>
+				<li><%= image_tag @item.avatar.url %></li>
+			<% else %>
+				<li> <i>Image not available </i></li>
+			<% end %>
+			<div class = "itemhighlight" >
+		    	<li>
+			  		<h3><%= @item.title %></h3>
+				</li>
+			</div>
+			<li>
+		   	  <i>
+			  	<%= @item.description %>
+		   	  </i>
+		    </li>
+
+        	</br>
+        	<li>
+				<%= parse_condition(@item.condition) %> condition </li>
+			</br>
+			<li>
+				Available on
+			    </br>
+				<%= @item.schedule_from.strftime("%B %d %Y (%a)") %> - <%= @item.schedule_to.strftime("%B %d %Y (%a)") %>
+			</li>
+			</br>
+
+			<table>
+				<tr>
+					<td><li><b>Category:</b> <%= parse_category @item.category %></li></td>
+					<td><li><b>At:</b> <%= @item.location %></li></td>
+				</tr>
+				<tr>
+					<td><li><b> Rental Price:</b> $ <%= @item.rental_price %></li>
+					</td>
+					<td><li><b>Deposit:</b> $ <%= @item.deposit %></li>
+					</td>
+				</tr>
+			</table>
+
+			</br>
+			</br>
+		</ul>
+
+		<ul class="pageitem">
+			<span class="name">
+				<%= link_to 'Browse more items', items_path %>
+			</span>
+		</ul>
+
+	  </div>
+
+</div>

@@ -1,9 +1,9 @@
 module ItemsHelper
   def parse_category(category)
     if category == 1
-      return "cat"
+      return "Car"
     elsif category == 2
-      return "boat"
+      return "Boat"
     end
   end
   

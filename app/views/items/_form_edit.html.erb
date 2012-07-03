@@ -1,0 +1,64 @@
+<body>
+
+<script type="text/javascript">
+$(function() {
+	$("#item_schedule_from").datepicker();
+	$("#item_schedule_from").datepicker("option", "dateFormat", "yy-mm-dd");
+	$("#item_schedule_from").val("<%=@item.schedule_from%>");
+	$("#item_schedule_to").datepicker();
+	$("#item_schedule_to").datepicker("option", "dateFormat", "yy-mm-dd");
+	$("#item_schedule_to").val("<%=@item.schedule_to%>");
+});
+</script>
+<div id="topbar">
+	<div id="leftnav">
+		<a href="index.html"><img alt="home" src="/images/home.png" /></a>
+	</div>
+</div>
+
+<div id="content">
+<%= form_for(@item)  do |f| %>
+  	<% if @item.errors.any? %>
+   	 <div id="error_explanation">
+   	    <ul class="pageitem">
+  			<li class="textbox"><%= f.error_messages %></li>
+  		</ul>
+
+     </div>
+  	<% end %>
+
+  		<span class="graytitle">Category</span>
+  		<ul class="pageitem">
+  			<li class="select">
+  				<%= f.select :category, options_for_select({"car" => 1, "boat" => 2},
+  				 	:selected => @item[:category]) %>
+  			</li>
+  		</ul>
+  		<span class="graytitle">Condition</span>
+  		<ul class="pageitem">
+  			<li class="select">
+  				<%= f.select :condition, options_for_select({"Excellent" => 1, "Great" => 2, "Good" => 3},
+  					:selected => @item[:condition]) %>
+  			</li>
+  		</ul>
+  		<ul class="pageitem">
+  			<li class="smallfield"><span class="name">Title</span><%= f.text_field :title, :placeholder=>@item.title %><br />
+  			<li class="smallfield"><span class="name">Description</span><%= f.text_field :description, :placeholder=> @item.description %><br />
+  			<li class="smallfield"><span class="name">Rental Price</span><%= f.text_field :rental_price, :placeholder=>@item.rental_price %><br />
+  			<li class="smallfield"><span class="name">Deposit</span><%= f.text_field :deposit, :placeholder=>@item.deposit %><br />
+  			<li class="smallfield"><span class="name">Location</span><%= f.text_field :location, :placeholder=>@item.location %><br />
+  			<li class="smallfield"><span class="name">From</span><%= f.text_field :schedule_from, :placeholder=> @item.schedule_from %><br />
+  			<li class="smallfield"><span class="name">To</span><%= f.text_field :schedule_to, :placeholder=> @item.schedule_to %><br />
+  			<li class="smallfield"><span class="name">Upload new Photo</span><%= f.file_field :avatar %><br />
+  			<li class="button"><%= f.submit "Update" %></li>
+  		</ul>
+
+		<ul class="pageitem"><li class="smallfield"><span class="name">
+			<%= link_to 'Original Post', @item%>  |
+			<%= link_to 'Back', items_path %>
+		</span> </li></ul>
+
+  	<% end %>
+  </div>
+</body>
+
