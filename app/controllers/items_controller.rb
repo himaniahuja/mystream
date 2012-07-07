@@ -45,4 +45,8 @@ class ItemsController < ApplicationController
   end
 
 
+  def myitems
+	@items = Item.where(:user => current_user.id)
+
+  end
 end

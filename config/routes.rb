@@ -13,6 +13,7 @@ Ishare::Application.routes.draw do
   resources :items
   
   match 'signup' => 'users#new', :as => :signup
+  match 'myitems' => 'items#myitems', :as => :myitems
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
