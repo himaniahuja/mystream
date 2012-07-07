@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
   validate :from_should_be_smaller_than_to
   
   def from_should_be_smaller_than_to
-    if schedule_from > schedule_to
+    if not schedule_from.nil? and not schedule_to.nil? and schedule_from > schedule_to
       errors.add(:schedule_from, "End Date can't be earlier than State Date")
     end
   end

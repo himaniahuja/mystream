@@ -1,27 +1,2 @@
-<body>
-
-<div id="topbar">
-	<div id="leftnav">
-		<a href="index.html"><img alt="home" src="images/home.png" /></a>
-	</div>
-</div>
-
-<div id="content">
-	<%= form_for @user, :url => {:action => "create"} do |f| %>
-		<span class="graytitle">Register</span>
-				
-		<ul class="pageitem">
-			<li class="smallfield"><span class="name">Name</span><%= f.text_field :login, :placeholder=>"Username" %><br />
-			<li class="smallfield"><span class="name">Email</span><%= f.text_field :email, :placeholder=>"example@example.com" %><br />
-			<li class="smallfield"><span class="name">Password</span><%= f.password_field :password, :placeholder=>"Enter Password" %><br />
-			<li class="smallfield"><span class="name">Password Confirmation</span><%= f.password_field :password_confirmation, :placeholder=>"Confirm Password" %><br />
-			<li class="button"><%= f.submit "Register" %></li>
-		</ul>
-		
-		<ul class="pageitem">
-			<li class="textbox"><%= f.error_messages %></li>
-		</ul>
-	<% end %>
-</div>
-
-</body>
+<h1>New</h1>
+<%= render 'form_edit' %>

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     end    
   end
 
-  def show
+  def index
     # @user = User.find(params[:id])
     @user = current_user
   end
@@ -33,11 +33,11 @@ class UsersController < ApplicationController
 
   # PUT /users/1
   def update
-    @user = current_user # makes our views "cleaner" and more consistent
+    @user = User.find(params[:id]) # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      format.html {redirect_to(@user, :notice => 'Successfully updated.') }
+      redirect_to :action => :index
     else
-      format.html { render :action => :edit }
+      render :action => :edit
     end
   end
 end

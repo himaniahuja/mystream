@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   
-  def index
+  
     @items = Item.all
   end
   
@@ -43,7 +43,6 @@ class ItemsController < ApplicationController
        end
     end
   end
-
 
   def myitems
 	@items = Item.where(:user => current_user.id)
