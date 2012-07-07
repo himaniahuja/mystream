@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string    :login,               :null => false
       t.string    :email,               :null => false
+      t.string    :address,             :null => false
       t.string    :crypted_password,    :null => false
       t.string    :password_salt,       :null => false
       t.string    :persistence_token,   :null => false
@@ -24,6 +25,7 @@ class CreateUsers < ActiveRecord::Migration
     User.new(
       :login => 'carina',
       :email => 'carina.zheng@gmail.com',
+      :address => '142 W Dana Street Mountain View 94043',
       :password => '1234',
       :password_confirmation => '1234',
     ).save
