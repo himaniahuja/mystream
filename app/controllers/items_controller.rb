@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   
   
     @items = Item.all
-  end
+
   
   def show
     @item = Item.find(params[:id])
