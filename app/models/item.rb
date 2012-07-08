@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :user,  :foreign_key => :user, :class_name => "User"
   validates_presence_of :user, :category, :title, :description, :location, :condition,
-    :rental_price, :deposit, :schedule_from, :schedule_to
+    :rental_price, :deposit, :schedule_from, :schedule_to, :geo_location
   validates_numericality_of :rental_price, :deposit
   has_attached_file :avatar, :styles => { :thumb => "100x100>" }
   
