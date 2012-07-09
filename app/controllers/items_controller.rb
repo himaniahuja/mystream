@@ -3,6 +3,14 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
+    case params[:rank_by]
+    when "distance"
+      @items = Item.all.sort!{|x, y|
+        x.estimate_distance_val(current_user) <=> 
+        y.estimate_distance_val(current_user)}
+    else
+      @items = Item.all(:order => params[:rank_by])
+    end
   end
   
   def show
@@ -27,14 +35,14 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
-	@item.user = current_user
+	  @item.user = current_user
   end
 
   # PUT /items/1
   def update
     @item = Item.find(params[:id])
-
-	@item.user = current_user
+    @item.user = current_user
+    
     respond_to do |format|
       if @item.update_attributes(params[:item])
         format.html { redirect_to(@item, :notice => 'Successfully updated.') }
@@ -45,7 +53,6 @@ class ItemsController < ApplicationController
   end
 
   def myitems
-	@items = Item.where(:user => current_user.id)
-
+	  @items = Item.where(:user => current_user.id)
   end
 end

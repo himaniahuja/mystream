@@ -37,3 +37,6 @@ pull*.dat
 push*.dat
 
 db/seeds.rb
+
+# Can ignore specific files
+.DS_Store

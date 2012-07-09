@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   def update
     @user = User.find(params[:id]) # makes our views "cleaner" and more consistent
+    
     if @user.update_attributes(params[:user])
       redirect_to :action => :index
     else
