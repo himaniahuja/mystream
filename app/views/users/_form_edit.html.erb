@@ -7,13 +7,13 @@
 	
 <div id="content">
 	<%= form_for @user do |f| %>
-		<span class="graytitle">Update Login Information</span>
+		<span class="graytitle">Login Information</span>
 				
 		<ul class="pageitem">
 			<li class="smallfield"><span class="name">Name</span><%= f.text_field :login %><br />
 			<li class="smallfield"><span class="name">Email</span><%= f.text_field :email %><br />
 			<li class="smallfield"><span class="name">New Password</span><%= f.password_field :password %><br />
-			<li class="smallfield"><span class="name">New Password Confirmation</span><%= f.password_field :password_confirmation %><br />
+			<li class="smallfield"><span class="name">Confirmation</span><%= f.password_field :password_confirmation %><br />
 			<li class="smallfield"><span class="name">Home Address</span><%= f.text_field :address %><br />
 			<li class="button"><%= f.submit "Update" %></li>
 			<li class="button"><%= link_to 'Discard changes', @user%></li>

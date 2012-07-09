@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
-	  @item.user = current_user
+	  #@item.user = current_user
   end
 
   # PUT /items/1
