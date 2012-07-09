@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   
-  
+  def index
     @items = Item.all
-
+	puts "himani"
+  end
   
   def show
     @item = Item.find(params[:id])
