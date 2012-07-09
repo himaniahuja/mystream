@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
-	puts "himani"
   end
   
   def show
