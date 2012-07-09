@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   
-  
+  def index
     @items = Item.all
+    puts current_user
   end
   
   def show
@@ -27,7 +28,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
-	@item.user = current_user
+	  @item.user = current_user
   end
 
   # PUT /items/1

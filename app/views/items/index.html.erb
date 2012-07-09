@@ -17,7 +17,8 @@
 		<% for item in @items %>
 			<li><a href='<%= item_path(item) %>'>
 			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-			<span class="comment"><%= item.location %></span>
+			<span class="comment"><%= item.location %>, 
+				<%= estimate_distance(item)%></span>
 			<span class="name"><%= item.title%></span>
 			<span class="stars4"></span>
 			<span class="starcomment">160 Ratings</span>

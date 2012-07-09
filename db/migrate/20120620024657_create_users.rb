@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :login,               :null => false
       t.string    :email,               :null => false
       t.string    :address,             :null => false
-      t.string    :geo_location,        :null => false
       t.string    :crypted_password,    :null => false
       t.string    :password_salt,       :null => false
       t.string    :persistence_token,   :null => false
