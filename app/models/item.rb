@@ -14,8 +14,15 @@ class Item < ActiveRecord::Base
   end
   
   # estimate the distance from current user to location
-  def estimate_distance
-    from = current_user.address
+  def estimate_distance_val(user)
+    from = user.address
+    to = location
+    directions = Gmaps4rails.destination({"from" => from, "to" => to})
+    return directions.first["distance"]["value"]
+  end
+  
+  def estimate_distance_text(user)
+    from = user.address
     to = location
     directions = Gmaps4rails.destination({"from" => from, "to" => to})
     return directions.first["distance"]["text"]

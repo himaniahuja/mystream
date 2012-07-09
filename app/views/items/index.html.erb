@@ -3,11 +3,9 @@
 <div id="topbar">
 	<div id="leftnav">
 		<a href="index.html"><img alt="home" src="images/home.png" /></a>
-		<a href="classiclist.html">Classic list</a>
-		<a href= users/current_user.id>My Profile</a>
-        <a href= myitems> My Posts</a></div>
+		<a href= "/users">My Profile</a>
+        <a href= "/myitems"> My Posts</a></div>
 	</div>
-
 
 	<div id="rightnav">
 		<a href="storelist.html">iTunes list</a></div>
@@ -18,13 +16,16 @@
 			<li><a href='<%= item_path(item) %>'>
 			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
 			<span class="comment"><%= item.location %>, 
-				<%= estimate_distance(item)%></span>
+				<%= item.estimate_distance_text current_user %></span>
 			<span class="name"><%= item.title%></span>
 			<span class="stars4"></span>
-			<span class="starcomment">160 Ratings</span>
+			<span class="starcomment">Last Updated: <%= item.updated_at %></span>
 			<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
 		<% end %>
 		</ul>
+		<%= select_tag(:rank_by, options_for_select(['updated_at', 'rental_price', 'distance'], params[:rank_by]), 
+			:onchange => "var r=document.getElementById('rank_by').value; 
+			window.location='/items?rank_by='+r")%>
 	</div>
 </div>
 
