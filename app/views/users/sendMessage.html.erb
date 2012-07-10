@@ -1,0 +1,23 @@
+<div id="content">
+   <div class = "itemdetail" >
+		<div class = "itemhighlight" >
+			<h3> Send Message </h3>
+		</div>
+
+		  <%= form_for(@message, :url => messages_path, :method => :post) do |f| %>
+			<ul class="pageitem">
+					<%= f.hidden_field(:recipient, :value => @item.id) %>
+				<li>Subject </li>
+				<li><%= f.text_field :topic, :size => "55" %> </li><br />
+				<li>Message</li>
+				<li><%= f.text_area :body %> </li><br/><br/>
+			</ul>
+			<ul class="pageitem">
+				<span class="name">
+					<li class="button"><%= f.submit "Send" %></li>
+				</span>
+			</ul>
+			<li class="textbox"><%= f.error_messages %></li>
+		<% end %>
+	</div>
+</div>

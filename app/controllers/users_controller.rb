@@ -41,4 +41,31 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+
+  def inbox
+	@title = "Inbox"
+	@messages = current_user.received_messages
+  end
+
+  def outbox
+	@title = "Outbox"
+	@messages = current_user.sent_messages
+  end
+
+  def sendMessage
+      @item = Item.find(params[:format])
+      @message = ActsAsMessageable::Message.new
+  end
+
+  def createMessage
+      @item = Item.find(params[:acts_as_messageable_message][:recipient].to_i)
+      @to = User.find(@item.user)
+
+      current_user.
+          send_message(@to, params[:acts_as_messageable_message][:topic], params[:acts_as_messageable_message][:body])
+
+      flash[:notice] = 'Message was successfully sent.'
+      redirect_to item_path(@item)
+
+  end
 end

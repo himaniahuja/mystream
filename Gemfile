@@ -15,6 +15,8 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'acts-as-messageable'
+
 gem 'jquery-rails'
 
 # Use unicorn as the web server
