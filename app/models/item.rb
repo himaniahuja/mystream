@@ -15,16 +15,36 @@ class Item < ActiveRecord::Base
   
   # estimate the distance from current user to location
   def estimate_distance_val(user)
-    from = user.address
-    to = location
-    directions = Gmaps4rails.destination({"from" => from, "to" => to})
-    return directions.first["distance"]["value"]
+    return estimate_distance(user)['value']
   end
   
   def estimate_distance_text(user)
+    return estimate_distance(user)['text']
+  end
+  
+ private
+  def estimate_distance(user)
     from = user.address
     to = location
-    directions = Gmaps4rails.destination({"from" => from, "to" => to})
-    return directions.first["distance"]["text"]
+    
+    # fetch from cache
+    gmap = Gmap.where(:from => from, :to => to)
+    if not gmap.empty?
+      return Marshal.load(gmap[0].distance)
+    end
+    
+    # TODO we need to catch exceptions herer
+    directions = Gmaps4rails.destination({
+      'from' => from,
+      'to' => to,
+    })
+    result = directions.first['distance']
+    # store in cache
+    Gmap.create(
+      :from => from,
+      :to => to,
+      :distance => Marshal.dump(result) 
+    )
+    return result
   end
 end

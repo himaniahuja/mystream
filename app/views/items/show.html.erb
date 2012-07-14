@@ -1,3 +1,12 @@
+<script type="text/javascript">
+$(function() {
+	$("#offer_rent_from").datepicker();
+	$("#offer_rent_from").datepicker("option", "dateFormat", "yy-mm-dd");
+	$("#offer_rent_to").datepicker();
+	$("#offer_rent_to").datepicker("option", "dateFormat", "yy-mm-dd");
+});
+</script>
+
 <div id="topbar">
 	<div id="leftnav">
 		<a href="/index"><img alt="home" src="/images/home.png" /></a>
@@ -41,11 +50,23 @@
 			</tr>
 		</table></br></br>
 	</ul>
-	<ul class="pageitem">
-		<span class="name">
+<span class="name">
 			<%= link_to 'Contact the owner', sendMessage_path(@item.id)  %>
 		</span>
+
+	<% if @item.user != current_user %>
+	<%= form_for @offer do |f| %>
+	<ul class="pageitem">
+				<input type="hidden" name="item_id" value="<%=@item.id%>">
+		<li class="smallfield"><span class="name">From</span><%= f.text_field :rent_from %><br />
+		<li class="smallfield"><span class="name">To</span><%= f.text_field :rent_to %><br />
 	</ul>
+		<li class="button"><%= f.submit "Contact Owner" %></li>
+		<% if not f.error_messages.empty? %>
+		<li class="textbox"><%= f.error_messages %></li>
+		<% end %>
+	<% end %>
+	<% end %>
 	<ul class="pageitem">
 		<span class="name">
 			<%= link_to 'Browse more items', items_path %>
@@ -53,3 +74,6 @@
 	</ul>
 	</div>
 </div>
+
+
+

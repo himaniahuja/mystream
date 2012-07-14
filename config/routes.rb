@@ -1,12 +1,16 @@
 Ishare::Application.routes.draw do
+  resources :users  # give us our some normal resource routes for users
+  resources :user_sessions
+  
   resources :items
+  resources :offers
 
   get "user_sessions/new"
-  
-  resources :user_sessions
 
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
+  match 'signup' => 'users#new', :as => :signup
+  
   
 resources :users  do
   resources :messages do
@@ -28,6 +32,9 @@ end
   match "/messages/:id/replyMessage" => "users#createReplyMessage" , :as => :create_reply
   match "/messages/:id/delete" => "users#deleteMessage" , :as => :delete_message
 
+  # resource :user, :as => 'account'  # a convenience route
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

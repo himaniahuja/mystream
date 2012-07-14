@@ -1,20 +1,34 @@
 class ItemsController < ApplicationController
-  before_filter :require_user, :only => [:new, :create]
+  before_filter :require_user, :only => [:index, :show, :new, :create, :edit, :update, :myitem]
   
   def index
-    @items = Item.all
-    case params[:rank_by]
-    when "distance"
-      @items = Item.all.sort!{|x, y|
+    rank_by = "updated_at desc"
+    if params[:rank_by]
+      rank_by = params[:rank_by]
+    end
+    
+    conditions = []
+    if params[:myitems]
+      conditions = ['user=?', current_user.id]
+    end
+      
+    if rank_by == 'distance'
+      @items = Item.find(:all,
+        :conditions => conditions,
+      ).sort!{|x, y|
         x.estimate_distance_val(current_user) <=> 
         y.estimate_distance_val(current_user)}
     else
-      @items = Item.all(:order => params[:rank_by])
+      @items = Item.find(:all,
+        :conditions => conditions,
+        :order => rank_by
+      )
     end
   end
   
   def show
     @item = Item.find(params[:id])
+    @offer = Offer.new
   end
 
   def new
@@ -34,8 +48,11 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    if @item.user != current_user
+      return
+    end
+    
     @item = Item.find(params[:id])
-	  #@item.user = current_user
   end
 
   # PUT /items/1

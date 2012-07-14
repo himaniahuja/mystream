@@ -1,12 +1,21 @@
-<body class="applist">
+<script type="text/javascript">
+  var path=
+	<% if params[:myitems] %>
+		"/items?myitems=1&"
+	<% else %>
+		"/items?"
+	<% end %>;
+</script>
 
+<body class="applist">
 <div id="topbar">
   <div id="leftnav">
     <a href="index.html"><img alt="home" src="images/home.png"/></a>
     <a href="/users">My Profile</a>
-    <a href="/myitems"> My Posts</a>
+    <a href= "/items?myitems=1"> My Posts</a></div>
   </div>
 </div>
+	</div>
 
 	<div id="rightnav">
 			<a href="/items/new">Add Item</a></div>
@@ -27,7 +36,7 @@
 		</ul>
 		<%= select_tag(:rank_by, options_for_select(['updated_at', 'rental_price', 'distance'], params[:rank_by]), 
 			:onchange => "var r=document.getElementById('rank_by').value; 
-			window.location='/items?rank_by='+r")%>
+			window.location=path+'rank_by='+r")%>
 	</div>
 </div>
 
