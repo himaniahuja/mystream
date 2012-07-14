@@ -34,7 +34,7 @@
 			<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
 		<% end %>
 		</ul>
-		<%= select_tag(:rank_by, options_for_select(['updated_at', 'rental_price', 'distance'], params[:rank_by]), 
+		<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by]), 
 			:onchange => "var r=document.getElementById('rank_by').value; 
 			window.location=path+'rank_by='+r")%>
 	</div>
