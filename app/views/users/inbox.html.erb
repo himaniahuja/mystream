@@ -1,0 +1,67 @@
+<div id="topbar">
+	<div id="leftnav">
+		<a href="/items"><img alt="home" src="/images/home.png" /></a>
+        <a href="/items"> Back</a>
+
+	</div>
+</div>
+
+<div id="content">
+  <div class="itemdetail">
+    <% if @messages.blank? %>
+        <h4>There are no messages in inbox. </h4>
+    <% else %>
+
+        <% if !@messagesUnread.blank? %>
+
+            <h4>New Messages</h4>
+            <% @messagesUnread.each do |m| %>
+                <ul class="pageitem">
+                  <a href='<%= show_message_path(m.id) %>'>
+
+                    <div class="bigText">
+                      <%= m.topic %>
+                    </div>
+
+                    <div class="mediumText">
+                      From: <%= @messagesHash[m.id] %>
+                    </div>
+
+
+                    <div class="lightText">
+                      <%= m.created_at.strftime("%B %d %Y (%a)") %>
+                    </div>
+
+                  </a>
+                </ul>
+            <% end %>
+        <% end %>
+
+
+        <% if !@messagesRead.blank? %>
+            <h4>Read Messages</h4>
+            <% @messagesRead.each do |m| %>
+                <ul class="pageitem">
+                  <a href='<%= show_message_path(m.id) %>'>
+
+                    <div class="bigText">
+                      <%= m.topic %>
+                    </div>
+
+                    <div class="mediumText">
+                      From: <%= @messagesHash[m.id] %>
+                    </div>
+
+
+                    <div class="lightText">
+                      <%= m.created_at.strftime("%B %d %Y (%a)") %>
+                    </div>
+
+                  </a>
+                </ul>
+            <% end %>
+        <% end %>
+    <% end %>
+
+  </div>
+</div>

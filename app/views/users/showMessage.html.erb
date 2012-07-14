@@ -1,0 +1,53 @@
+<div id="topbar">
+	<div id="leftnav">
+		<a href="/index"><img alt="home" src="/images/home.png" /></a>
+        <a href="/inbox"> Inbox</a>
+	</div>
+</div>
+
+<div id="content">
+  <div class="itemdetail">
+    <ul class="pageitem">
+      <ul>
+        <div class="bigText">
+          <%= @message.topic %>
+
+        </div>
+      </ul>
+
+      <ul>
+        <div class="mediumText">
+          From: <%= @sender.login %>
+
+        </div>
+      </ul>
+
+
+      <ul>
+        <div class="mediumText">
+          <p></p><%= @message.body %>
+          </p>
+        </div>
+      </ul>
+      <ul>
+        <div class="lightText">
+          <%= @message.created_at.strftime("%B %d %Y (%a)") %>
+        </div>
+      </ul>
+    </ul>
+
+<ul class="pageitem">
+		<span class="name">
+
+			<%= link_to 'Reply', reply_message_path(@message) %>
+		</span>
+</ul>
+
+    <ul class="pageitem">
+    		<span class="name">
+
+    			<%= link_to 'Delete', delete_message_path(@message) %>
+    		</span>
+    </ul>
+  </div>
+</div>

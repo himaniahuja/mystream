@@ -1,11 +1,12 @@
 <body class="applist">
 
 <div id="topbar">
-	<div id="leftnav">
-		<a href="index.html"><img alt="home" src="images/home.png" /></a>
-		<a href= "/users">My Profile</a>
-        <a href= "/myitems"> My Posts</a></div>
-	</div>
+  <div id="leftnav">
+    <a href="index.html"><img alt="home" src="images/home.png"/></a>
+    <a href="/users">My Profile</a>
+    <a href="/myitems"> My Posts</a>
+  </div>
+</div>
 
 	<div id="rightnav">
 			<a href="/items/new">Add Item</a></div>
@@ -28,6 +29,14 @@
 			:onchange => "var r=document.getElementById('rank_by').value; 
 			window.location='/items?rank_by='+r")%>
 	</div>
+</div>
+
+<div class = footerBar>
+<ul class="pageitem">
+
+    <a href="/inbox">Inbox</a> |
+    <a href="/outbox"> Outbox</a>
+</ul>
 </div>
 
 </body>

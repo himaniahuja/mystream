@@ -1,0 +1,17 @@
+<%= form_for(@message, :url => url, :method => :post) do |f| %>
+    <ul class="pageitem">
+      <%= f.hidden_field(:recipient, :value => @recipient_id) %>
+      <li>Subject</li>
+      <li><%= f.text_field :topic, :size => "55", :value => @topic %> </li>
+      <br/>
+      <li>Message</li>
+      <li><%= f.text_area :body, :value => @body%> </li>
+      <br/><br/>
+    </ul>
+    <ul class="pageitem">
+    <span class="name">
+	    <li class="button"><%= f.submit "Send" %></li>
+    </span>
+    </ul>
+    <li class="textbox"><%= f.error_messages %></li>
+<% end %>

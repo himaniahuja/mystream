@@ -20,7 +20,14 @@ end
   match 'myitems' => 'items#myitems', :as => :myitems
   match "/sendMessage" => "users#sendMessage"
   match "/messages" => "users#createMessage"
-  
+  match "/inbox" => "users#inbox"
+  match "/outbox" => "users#outbox"
+  match "/messages/:id" => "users#showMessage" , :as => :show_message
+  match "/messages/:id/sent" => "users#showSentMessage" , :as => :show_sent_message
+  match "/messages/:id/reply" => "users#replyMessage" , :as => :reply_message
+  match "/messages/:id/replyMessage" => "users#createReplyMessage" , :as => :create_reply
+  match "/messages/:id/delete" => "users#deleteMessage" , :as => :delete_message
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

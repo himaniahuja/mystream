@@ -1,0 +1,37 @@
+<div id="topbar">
+	<div id="leftnav">
+		<a href="/items"><img alt="home" src="/images/home.png" /></a>
+        <a href="/items"> Back</a>
+
+	</div>
+</div>
+
+<div id="content">
+  <div class="itemdetail">
+    <% if @messages.blank? %>
+            <h4>There are no messages in outbox.</h4>
+    <% else %>
+        <% @messages.each do |m| %>
+        <ul class="pageitem">
+          <a href='<%= show_sent_message_path(m.id) %>'>
+
+            <div class="bigText">
+              <%= m.topic %>
+            </div>
+
+            <div class="mediumText">
+                 Sent to:  <%= @messagesHash[m.id]%>
+            </div>
+
+
+            <div class="lightText">
+              <%= m.created_at.strftime("%B %d %Y (%a)") %>
+            </div>
+
+          </a>
+        </ul>
+    <% end %>
+  <% end %>
+
+  </div>
+</div>
