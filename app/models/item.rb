@@ -1,5 +1,8 @@
 class Item < ActiveRecord::Base
-  belongs_to :user,  :foreign_key => :user, :class_name => "User"
+  belongs_to :confirmed_order,   :class_name => "Order"
+  
+  belongs_to :user
+  has_many :orders
   validates_presence_of :user, :category, :title, :description, :location, :condition,
     :rental_price, :deposit, :schedule_from, :schedule_to
   validates_numericality_of :rental_price, :deposit

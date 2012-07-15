@@ -7,9 +7,9 @@ class ItemsController < ApplicationController
       rank_by = params[:rank_by]
     end
     
-    conditions = []
+    conditions = ['confirmed_order_id=0']
     if params[:myitems]
-      conditions = ['user=?', current_user.id]
+      conditions << ['user_id=?', current_user.id]
     end
       
     if rank_by == 'distance'
@@ -24,11 +24,16 @@ class ItemsController < ApplicationController
         :order => rank_by
       )
     end
+    
+    # get all the confirmed items
+    @confirmed_items = Item.find(:all,
+      :conditions => ['confirmed_order_id>0 and user_id=?', current_user.id]
+    )
   end
   
   def show
     @item = Item.find(params[:id])
-    @offer = Offer.new
+    @order = Order.new
   end
 
   def new

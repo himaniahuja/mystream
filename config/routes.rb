@@ -3,13 +3,14 @@ Ishare::Application.routes.draw do
   resources :user_sessions
   
   resources :items
-  resources :offers
+  resources :orders
 
   get "user_sessions/new"
 
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   match 'signup' => 'users#new', :as => :signup
+  match '/order/confirm/:id' => 'orders#confirm'
   
   
 resources :users  do

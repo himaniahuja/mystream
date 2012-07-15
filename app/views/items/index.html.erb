@@ -27,7 +27,11 @@
 			<li><a href='<%= item_path(item) %>'>
 			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
 			<span class="comment"><%= item.location %>, 
-				<%= item.estimate_distance_text current_user %></span>
+				<%= item.estimate_distance_text current_user %>
+				<% if item.user == current_user %>
+				(<%=item.orders.size%> Orders)
+				<% end %>
+				</span>
 			<span class="name"><%= item.title%></span>
 			<span class="stars4"></span>
 			<span class="starcomment">Last Updated: <%= item.updated_at %></span>
@@ -38,6 +42,29 @@
 			:onchange => "var r=document.getElementById('rank_by').value; 
 			window.location=path+'rank_by='+r")%>
 	</div>
+	
+	<!--Refactor this -->
+	<% if not @confirmed_items.empty? %>
+	<h1>Confirmed Items</h1>
+	<div id="content">
+	<ul>
+	<% for item in @confirmed_items %>
+		<li><a href='<%= item_path(item) %>'>
+		<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
+		<span class="comment"><%= item.location %>, 
+			<%= item.estimate_distance_text current_user %>
+			<% if item.user == current_user %>
+			(<%=item.orders.size%> Orders)
+			<% end %>
+			</span>
+		<span class="name"><%= item.title%></span>
+		<span class="stars4"></span>
+		<span class="starcomment">Last Updated: <%= item.updated_at %></span>
+		<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
+	<% end %>
+	</ul>
+	</div>
+	<% end %>
 </div>
 
 <div class = footerBar>

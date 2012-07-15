@@ -1,8 +1,9 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
-      t.integer :user
+      t.integer :user_id
       t.integer :category
+      t.integer :confirmed_order_id, :default=>0
       t.string :title
       t.string :description
       t.string :location

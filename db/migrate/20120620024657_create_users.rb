@@ -24,7 +24,7 @@ class CreateUsers < ActiveRecord::Migration
     
     User.create(
       :login => 'test1',
-      :email => 'test2@gmail.com',
+      :email => 'test1@gmail.com',
       :address => '330 Sierra Vista Ave Mountain View 94043',
       :password => '1234',
       :password_confirmation => '1234',
