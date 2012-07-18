@@ -1,9 +1,20 @@
+<script type="text/javascript">
+$(function() {
+	$("#order_rent_from").datepicker();
+	$("#order_rent_from").datepicker("option", "dateFormat", "yy-mm-dd");
+	$("#order_rent_to").datepicker();
+	$("#order_rent_to").datepicker("option", "dateFormat", "yy-mm-dd");
+});
+</script>
+
 <div id="topbar">
 	<div id="leftnav">
 		<a href="/index"><img alt="home" src="/images/home.png" /></a>
 	</div>
 	<div id="rightnav">
+		<% if @item.confirmed_order.nil? %>
 		<%= link_to 'Edit', edit_item_path(@item) %>
+		<% end %>
 	</div>
 </div>
 
@@ -41,11 +52,28 @@
 			</tr>
 		</table></br></br>
 	</ul>
-	<ul class="pageitem">
+	<% if @item.user != current_user %>
 		<span class="name">
 			<%= link_to 'Contact the owner', sendMessage_path(@item.id)  %>
 		</span>
+		<%= form_for @order do |f| %>
+		<ul class="pageitem">
+		<input type="hidden" name="item_id" value="<%=@item.id%>">
+		<li class="smallfield"><span class="name">From</span><%= f.text_field :rent_from %><br />
+		<li class="smallfield"><span class="name">To</span><%= f.text_field :rent_to %><br />
 	</ul>
+		<li class="button"><%= f.submit "Book" %></li>
+		<% if not f.error_messages.empty? %>
+		<li class="textbox"><%= f.error_messages %></li>
+		<% end %>
+		<% end %>
+	<% elsif @item.confirmed_order.nil? %>
+		<ul class="pageitem">
+		<% for order in @item.orders %>
+		<li>From: <%= order.rent_from %> to: <%= order.rent_to %> by <%= order.user.login %><br/><a href="/order/confirm/<%=order.id%>">Confirm this</a>
+		<% end %>
+		</ul>
+	<% end %>
 	<ul class="pageitem">
 		<span class="name">
 			<%= link_to 'Browse more items', items_path %>
@@ -53,3 +81,6 @@
 	</ul>
 	</div>
 </div>
+
+
+

@@ -11,11 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120709211317) do
+ActiveRecord::Schema.define(:version => 20120714194531) do
+
+  create_table "gmaps", :force => true do |t|
+    t.string   "from"
+    t.string   "to"
+    t.string   "distance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "items", :force => true do |t|
-    t.integer  "user"
+    t.integer  "user_id"
     t.integer  "category"
+    t.integer  "confirmed_order_id",  :default => 0
     t.string   "title"
     t.string   "description"
     t.string   "location"
@@ -51,6 +60,15 @@ ActiveRecord::Schema.define(:version => 20120709211317) do
 
   add_index "messages", ["ancestry"], :name => "index_messages_on_ancestry"
   add_index "messages", ["sent_messageable_id", "received_messageable_id"], :name => "acts_as_messageable_ids"
+
+  create_table "orders", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.date     "rent_from"
+    t.date     "rent_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

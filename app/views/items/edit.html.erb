@@ -6,8 +6,8 @@
 
 <h1>Update</h1>
 
-<% if @item.user != current_user%>
+<% if @item.user != current_user %>
 Not Authorized!
-<%else%>
+<% else %>
 <%= render 'form_edit' %>
-<%end%>
+<% end %>

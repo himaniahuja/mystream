@@ -22,6 +22,21 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, ["email"], :name => "index_users_on_email", :unique => true
     add_index :users, ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
     
+    User.create(
+      :login => 'test1',
+      :email => 'test1@gmail.com',
+      :address => '330 Sierra Vista Ave Mountain View 94043',
+      :password => '1234',
+      :password_confirmation => '1234',
+    )
+    
+    User.create(
+      :login => 'test2',
+      :email => 'test2@gmail.com',
+      :address => '142 W Dana Street Mountain View 94041',
+      :password => '1234',
+      :password_confirmation => '1234',
+    )
   end
 
   def self.down

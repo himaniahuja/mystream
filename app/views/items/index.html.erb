@@ -1,12 +1,21 @@
-<body class="applist">
+<script type="text/javascript">
+  var path=
+	<% if params[:myitems] %>
+		"/items?myitems=1&"
+	<% else %>
+		"/items?"
+	<% end %>;
+</script>
 
+<body class="applist">
 <div id="topbar">
   <div id="leftnav">
     <a href="index.html"><img alt="home" src="images/home.png"/></a>
     <a href="/users">My Profile</a>
-    <a href="/myitems"> My Posts</a>
+    <a href= "/items?myitems=1"> My Posts</a></div>
   </div>
 </div>
+	</div>
 
 	<div id="rightnav">
 			<a href="/items/new">Add Item</a></div>
@@ -18,17 +27,44 @@
 			<li><a href='<%= item_path(item) %>'>
 			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
 			<span class="comment"><%= item.location %>, 
-				<%= item.estimate_distance_text current_user %></span>
+				<%= item.estimate_distance_text current_user %>
+				<% if item.user == current_user %>
+				(<%=item.orders.size%> Orders)
+				<% end %>
+				</span>
 			<span class="name"><%= item.title%></span>
 			<span class="stars4"></span>
 			<span class="starcomment">Last Updated: <%= item.updated_at %></span>
 			<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
 		<% end %>
 		</ul>
-		<%= select_tag(:rank_by, options_for_select(['updated_at', 'rental_price', 'distance'], params[:rank_by]), 
+		<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by]), 
 			:onchange => "var r=document.getElementById('rank_by').value; 
-			window.location='/items?rank_by='+r")%>
+			window.location=path+'rank_by='+r")%>
 	</div>
+	
+	<!--Refactor this -->
+	<% if not @confirmed_items.empty? %>
+	<h1>Confirmed Items</h1>
+	<div id="content">
+	<ul>
+	<% for item in @confirmed_items %>
+		<li><a href='<%= item_path(item) %>'>
+		<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
+		<span class="comment"><%= item.location %>, 
+			<%= item.estimate_distance_text current_user %>
+			<% if item.user == current_user %>
+			(<%=item.orders.size%> Orders)
+			<% end %>
+			</span>
+		<span class="name"><%= item.title%></span>
+		<span class="stars4"></span>
+		<span class="starcomment">Last Updated: <%= item.updated_at %></span>
+		<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
+	<% end %>
+	</ul>
+	</div>
+	<% end %>
 </div>
 
 <div class = footerBar>
