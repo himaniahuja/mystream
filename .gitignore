@@ -2,7 +2,7 @@
 db/*.sqlite3
 log/*.log
 tmp/
-
+gemfile.lock
 .svn
 .gems
 .gems_old
