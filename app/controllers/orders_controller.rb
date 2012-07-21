@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :require_user, :only => [:create]
+  before_filter :require_user, :only => [:create, :confirm]
   
   def create
     @order = Order.new(params[:order])

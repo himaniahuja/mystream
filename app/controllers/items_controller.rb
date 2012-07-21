@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :require_user, :only => [:index, :show, :new, :create, :edit, :update, :myitem]
+  before_filter :require_user, :only => [:new, :create, :edit, :update]
   
   def index
     rank_by = "updated_at desc"
@@ -9,10 +9,16 @@ class ItemsController < ApplicationController
     
     conditions = ['confirmed_order_id=0']
     if params[:myitems]
-      conditions << ['user_id=?', current_user.id]
+      if not require_user
+        return
+      end
+      conditions = ['confirmed_order_id=0 and user_id=?', current_user.id]
     end
       
     if rank_by == 'distance'
+      if not require_user
+        return
+      end
       @items = Item.find(:all,
         :conditions => conditions,
       ).sort!{|x, y|
@@ -25,10 +31,13 @@ class ItemsController < ApplicationController
       )
     end
     
-    # get all the confirmed items
-    @confirmed_items = Item.find(:all,
-      :conditions => ['confirmed_order_id>0 and user_id=?', current_user.id]
-    )
+    @confirmed_items = []
+    if current_user
+      # get all the confirmed items
+      @confirmed_items = Item.find(:all,
+        :conditions => ['confirmed_order_id>0 and user_id=?', current_user.id]
+      )
+    end
   end
   
   def show
@@ -53,11 +62,11 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @item = Item.find(params[:id])
+
     if @item.user != current_user
       return
     end
-    
-    @item = Item.find(params[:id])
   end
 
   # PUT /items/1
@@ -73,8 +82,5 @@ class ItemsController < ApplicationController
        end
     end
   end
-
-  def myitems
-	  @items = Item.where(:user => current_user.id)
-  end
+  
 end
