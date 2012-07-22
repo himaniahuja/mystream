@@ -1,0 +1,40 @@
+<body>
+<div id="content">
+  <% if @item.confirmed_order.nil? %>
+
+      You are not authorized to write reviews !
+      <br/>
+      Only after you confirm the order you can write reviews.
+
+  <% else %>
+      <%= form_for @comment do |f| %>
+          <span class="graytitle">Rating</span>
+
+
+          <input type="hidden" name="item_id" value="<%= @item.id %>">
+          <input type="hidden" name="receiver_id" value="<%= @receiver_id %>">
+
+          <ul class="pageitem">
+            <li class="select">
+              <%= f.select :rating, options_for_select({"Excellent" => 4, "Good" => 3, "Minimally Acceptable" => 2, "Poor" => 1},
+                                                       :selected => @comment[:rating]) %>
+            </li>
+          </ul>
+
+          <ul class="pageitem">
+            <li class="smallfield"><span class="name">Comments</span><%= f.text_field :comment_text %>
+              <br/>
+              <br/>
+            <li class="button"><%= f.submit "Submit" %></li>
+            <li class="textbox"><%= f.error_messages %></li>
+          </ul>
+
+          <ul class="pageitem">
+            <li class="smallfield"><span class="name">
+			 <%= link_to 'Back', item_path(@item.id) %></span>
+            </li>
+          </ul>
+      <% end %>
+  <% end %>
+</div>
+</body>

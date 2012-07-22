@@ -18,6 +18,8 @@ resources :users  do
   end
 end
 
+  resources :comments
+
 # give us our some normal resource routes for users
   # resource :user, :as => 'account'  # a convenience route
   

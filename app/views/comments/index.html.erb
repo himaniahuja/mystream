@@ -1,0 +1,33 @@
+<div id="topbar">
+  <div id="leftnav">
+    <a href="/items"><img alt="home" src="/images/home.png"/></a>
+    <a href="/items"> Back</a>
+  </div>
+</div>
+
+<div id="content">
+  <div class="itemdetail">
+    <% if @comment_Hash.empty? %>
+        <h4>There are no comments for this user. </h4>
+    <% else %>
+        <% @comment_Hash.each do |c, s| %>
+            <ul class="pageitem">
+
+              <div class="bigText">
+                <%= s.login %>  said .....
+              </div>
+
+              <div class="mediumText">
+                Rating: <%= c.rating %>
+              </div>
+              <br/>
+              <div class="mediumText">
+                <%= c.comment_text %>
+              </div>
+
+            </ul>
+        <% end %>
+    <% end %>
+
+  </div>
+</div>
