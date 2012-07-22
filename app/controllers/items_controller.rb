@@ -77,4 +77,9 @@ class ItemsController < ApplicationController
   def myitems
 	  @items = Item.where(:user => current_user.id)
   end
+
+  def user_profile
+    @user = User.find(params[:user_id])
+
+  end
 end
