@@ -17,9 +17,25 @@ class OrdersController < ApplicationController
   def confirm
     @order = Order.find(params[:id])
     @item = @order.item
+    
+    # send messages to all users
+    for order in @item.orders
+      msg_from = @item.user
+      if order == @order
+        title = "Confirmed order"
+        msg = "Thank you for your order. Please contact me for further information."
+      else
+        title = "We are sorry..."
+        msg = "We are sorry to inform you that the item is not available. Please browse other items."
+      end
+      msg_from.send_message(order.user, 
+        title,
+        msg)
+    end
+    
     @item.confirmed_order = @order
     
-    @item.save
+    #@item.save
     redirect_to :controller => "items", :action => "index"
   end
   
