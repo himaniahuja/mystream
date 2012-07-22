@@ -26,8 +26,10 @@
 		<% for item in @items %>
 			<li><a href='<%= item_path(item) %>'>
 			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-			<span class="comment"><%= item.location %>, 
-				<%= item.estimate_distance_text current_user %>
+			<span class="comment"><%= item.location %> 
+				<% if current_user %>
+				,<%= item.estimate_distance_text current_user %>
+				<% end %>
 				<% if item.user == current_user %>
 				(<%=item.orders.size%> Orders)
 				<% end %>
@@ -51,8 +53,10 @@
 	<% for item in @confirmed_items %>
 		<li><a href='<%= item_path(item) %>'>
 		<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-		<span class="comment"><%= item.location %>, 
-			<%= item.estimate_distance_text current_user %>
+		<span class="comment"><%= item.location %>
+			<% if current_user %>
+			,<%= item.estimate_distance_text current_user %>
+			<% end %>
 			<% if item.user == current_user %>
 			(<%=item.orders.size%> Orders)
 			<% end %>
