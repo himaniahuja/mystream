@@ -11,17 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120722082740) do
+ActiveRecord::Schema.define(:version => 20120714194531) do
 
-  create_table "comments", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "owner_id"
-    t.integer  "receiver_id"
-    t.integer  "rating"
-    t.text     "comment_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "gmaps", :force => true do |t|
     t.string   "from"
