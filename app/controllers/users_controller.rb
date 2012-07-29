@@ -56,11 +56,13 @@ class UsersController < ApplicationController
     @messagesHash = Hash.new
     @messagesRead = Array.new
     @messagesUnread = Array.new
+    @numberOfUnreadMessages = 0
 
     @messages.each do |m|
       if !m.recipient_delete
         if !m.opened
           @messagesUnread << m
+          @numberOfUnreadMessages +=1
         else
           @messagesRead << m
         end
@@ -113,6 +115,8 @@ class UsersController < ApplicationController
 
     @message = current_user.messages.with_id(params[:id]).first
     @sender = User.find(@message.sent_messageable_id)
+    @body = @message.body
+    @bodyTexts = @body.split("-----")
     @message.mark_as_read
     @message.save!
 
@@ -121,6 +125,8 @@ class UsersController < ApplicationController
   def showSentMessage
 
     @message = current_user.messages.with_id(params[:id]).first
+    @body = @message.body
+    @bodyTexts = @body.split("-----")
     @receiver = User.find(@message.received_messageable_id)
 
   end
@@ -132,7 +138,7 @@ class UsersController < ApplicationController
     @recipient = User.find(@recipient_id)
 
     @topic = "Re: #{@message.topic}"
-    @body = "\n\n\n\n\n\n----------------------\n\nOn " +
+    @body = "\n\n\n\n\n\n--------------------------------------------\n\nOn " +
         @message.created_at.strftime("%B %d %Y (%a)") + " " +
         @recipient.login + " wrote :  \n " + @message.body
 
@@ -143,8 +149,8 @@ class UsersController < ApplicationController
 
     @message = current_user.messages.with_id(params[:id]).first
     @body = params[:acts_as_messageable_message][:body]
-    @new_body = @body.split("--------")[0]
-    current_user.reply_to(@message, "Re: #{params[:acts_as_messageable_message][:topic]}", @new_body)
+    #@new_body = @body.split("--------")[0]
+    current_user.reply_to(@message, "Re: #{params[:acts_as_messageable_message][:topic]}", @body)
 
     flash[:notice] = 'Reply sent.'
     redirect_to inbox_path
@@ -171,5 +177,24 @@ class UsersController < ApplicationController
 
   end
 
+  def deleteAllMessages
+    if params[:format] == "inbox"
+      @messages = current_user.received_messages
+      @messages.each do |m|
+        m.recipient_delete = true
+        m.save!
+      end
+    else
+      @messages = current_user.sent_messages
+      @messages.each do |m|
+        m.sender_delete = true
+        m.save!
+      end
+    end
+
+    flash[:notice] = 'Messages deleted.'
+    redirect_to items_path
+
+  end
 
 end

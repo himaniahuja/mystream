@@ -35,6 +35,7 @@ end
   match "/messages/:id/replyMessage" => "users#createReplyMessage" , :as => :create_reply
   match "/messages/:id/delete" => "users#deleteMessage" , :as => :delete_message
   match "/user_profile/:user_id" => "items#user_profile", :as => :user_profile
+  match "/deleteMessages(.:format)" => "users#deleteAllMessages", :as => :delete_messages
 
   # resource :user, :as => 'account'  # a convenience route
   

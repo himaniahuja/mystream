@@ -1,46 +1,51 @@
 <div id="topbar">
-	<div id="leftnav">
-		<a href="/index"><img alt="home" src="/images/home.png" /></a>
-        <a href="/outbox"> Outbox</a>
-	</div>
+  <div id="leftnav">
+    <a href="/index"><img alt="home" src="/images/home.png"/></a>
+    <a href="/outbox"> Outbox</a>
+  </div>
 </div>
 
 <div id="content">
   <div class="itemdetail">
     <ul class="pageitem">
-      <ul>
+
+      <li>
         <div class="bigText">
           <%= @message.topic %>
-
         </div>
-      </ul>
+      </li>
 
-      <ul>
+      <li>
         <div class="mediumText">
           Sent to: <%= @receiver.login %>
-
         </div>
-      </ul>
+      </li>
 
+      <li>
+        <% @bodyTexts.each_with_index do |b, x| %>
+            <div class="mediumText">
+              <% if x== 0 %>
+                  <p><%= b %></p>
+              <% else %>
+                  <p><div class="lighter"><%= b %></div></p>
+              <% end %>
+            </div>
+        <% end %>
+      </li>
 
-      <ul>
-        <div class="mediumText">
-          <p></p><%= @message.body %>
-          </p>
-        </div>
-      </ul>
-      <ul>
+      <li>
         <div class="lightText">
           <%= @message.created_at.strftime("%B %d %Y (%a)") %>
         </div>
-      </ul>
+      </li>
+
     </ul>
 
     <ul class="pageitem">
-      		<span class="name">
+      	<span class="name">
+      		<%= link_to 'Delete', delete_message_path(@message) %>
+      	</span>
+    </ul>
 
-      			<%= link_to 'Delete', delete_message_path(@message) %>
-      		</span>
-      </ul>
   </div>
 </div>

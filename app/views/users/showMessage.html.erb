@@ -1,47 +1,54 @@
 <div id="topbar">
-	<div id="leftnav">
-		<a href="/index"><img alt="home" src="/images/home.png" /></a>
-        <a href="/inbox"> Inbox</a>
-	</div>
+  <div id="leftnav">
+    <a href="/index"><img alt="home" src="/images/home.png"/></a>
+    <a href="/inbox"> Inbox</a>
+  </div>
 </div>
 
 <div id="content">
   <div class="itemdetail">
     <ul class="pageitem">
-      <ul>
+      <li>
         <div class="bigText">
           <%= @message.topic %>
 
         </div>
-      </ul>
+      </li>
 
-      <ul>
+      <li>
         <div class="mediumText">
           From: <%= @sender.login %>
 
         </div>
-      </ul>
+      </li>
 
 
-      <ul>
+      <li>
         <div class="mediumText">
-          <p></p><%= @message.body %>
-          </p>
+          <% @bodyTexts.each_with_index do |b, x| %>
+              <% if x== 0  %>
+                  <p><%= b %></p>
+              <% else %>
+                  <p><div class="lighter"><%= b %></div></p>
+              <% end %>
+
+          <% end %>
         </div>
-      </ul>
-      <ul>
+      </li>
+
+      <li>
         <div class="lightText">
           <%= @message.created_at.strftime("%B %d %Y (%a)") %>
         </div>
-      </ul>
+      </li>
     </ul>
 
-<ul class="pageitem">
+    <ul class="pageitem">
 		<span class="name">
 
 			<%= link_to 'Reply', reply_message_path(@message) %>
 		</span>
-</ul>
+    </ul>
 
     <ul class="pageitem">
     		<span class="name">

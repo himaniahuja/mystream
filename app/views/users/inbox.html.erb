@@ -1,9 +1,9 @@
 <div id="topbar">
-	<div id="leftnav">
-		<a href="/items"><img alt="home" src="/images/home.png" /></a>
-        <a href="/items"> Back</a>
+  <div id="leftnav">
+    <a href="/items"><img alt="home" src="/images/home.png"/></a>
+    <a href="/items"> Back</a>
 
-	</div>
+  </div>
 </div>
 
 <div id="content">
@@ -14,7 +14,12 @@
 
         <% if !@messagesUnread.blank? %>
 
-            <h4>New Messages</h4>
+            <% if @numberOfUnreadMessages > 1 %>
+                <h3><%= @numberOfUnreadMessages %> new messages</h3>
+            <% else %>
+                <h3><%= @numberOfUnreadMessages %> new message</h3>
+
+            <% end %>
             <% @messagesUnread.each do |m| %>
                 <ul class="pageitem">
                   <a href='<%= show_message_path(m.id) %>'>
@@ -42,26 +47,39 @@
             <h4>Read Messages</h4>
             <% @messagesRead.each do |m| %>
                 <ul class="pageitem">
-                  <a href='<%= show_message_path(m.id) %>'>
+                  <div class="read">
+                    <a href='<%= show_message_path(m.id) %>'>
 
-                    <div class="bigText">
-                      <%= m.topic %>
-                    </div>
+                      <div class="bigText">
+                        <%= m.topic %>
+                      </div>
 
-                    <div class="mediumText">
-                      From: <%= @messagesHash[m.id] %>
-                    </div>
+                      <div class="mediumText">
+                        From: <%= @messagesHash[m.id] %>
+                      </div>
 
 
-                    <div class="lightText">
-                      <%= m.created_at.strftime("%B %d %Y (%a)") %>
-                    </div>
+                      <div class="lightText">
+                        <%= m.created_at.strftime("%B %d %Y (%a)") %>
+                      </div>
 
-                  </a>
+
+                    </a>
+                  </div>
                 </ul>
             <% end %>
         <% end %>
+
+        <ul class="pageitem">
+                <span class="name">
+                    <% @flag = "inbox" %>
+                  <%= link_to 'Delete all', delete_messages_path(@flag) %>
+            	</span>
+        </ul>
+
+
     <% end %>
+
 
   </div>
 </div>

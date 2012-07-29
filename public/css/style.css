@@ -59,3 +59,16 @@ a{
    text-align: center;
 
 }
+
+.read{
+
+    background-color: #c0c0c0;
+    border-radius: 5px;
+    border-color: #000000;
+
+}
+
+.lighter {
+
+  color: #6d6d6d;
+}

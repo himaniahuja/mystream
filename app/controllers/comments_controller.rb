@@ -24,8 +24,8 @@ class CommentsController < ApplicationController
   end
 
   def index
-
-    @comments = Comment.where(:receiver_id => params[:format]).order("created_at DESC")
+    @receiver_id = params[:format]
+    @comments = Comment.where(:receiver_id => @receiver_id).order("created_at DESC")
     @comment_Hash = Hash.new
 
     @comments.each do |c|

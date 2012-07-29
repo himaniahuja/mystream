@@ -38,6 +38,17 @@ class ItemsController < ApplicationController
         :conditions => ['confirmed_order_id>0 and user_id=?', current_user.id]
       )
     end
+
+    @messages = current_user.received_messages
+    @numberOfUnreadMessages = 0
+    @messages.each do |m|
+      if !m.recipient_delete
+          if !m.opened
+            @numberOfUnreadMessages += 1
+          end
+      end
+    end
+
   end
   
   def show
