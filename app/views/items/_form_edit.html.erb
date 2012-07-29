@@ -29,13 +29,14 @@ $(function() {
   	</ul>
   	<ul class="pageitem">
   		<li class="smallfield"><span class="name">Title</span><%= f.text_field :title %></li><br/>
-  		<li class="smallfield"><span class="name">Description</span><%= f.text_field :description %><br />
-  		<li class="smallfield"><span class="name">Rental Price (Per Day)</span><%= f.text_field :rental_price %><br />
-  		<li class="smallfield"><span class="name">Deposit</span><%= f.text_field :deposit %><br />
-  		<li class="smallfield"><span class="name">Location</span><%= f.text_field :location %><br />
- 		<li class="smallfield"><span class="name">From</span><%= f.text_field :schedule_from %><br />
-  		<li class="smallfield"><span class="name">To</span><%= f.text_field :schedule_to %><br />
-  		<li class="smallfield"><span class="name">Upload new Photo</span><%= f.file_field :avatar %><br />
+  		<li class="smallfield"><span class="name">Description</span><%= f.text_field :description %></li><br />
+  		<li class="smallfield"><span class="name">Rental Price (Per Day)</span><%= f.text_field :rental_price %></li><br />
+  		<li class="smallfield"><span class="name">Deposit</span><%= f.text_field :deposit %></li><br />
+  		<li class="smallfield"><span class="name">Location</span><%= f.text_field :location %></li><br />
+ 		<li class="smallfield"><span class="name">From</span><%= f.text_field :schedule_from %></li><br />
+  		<li class="smallfield"><span class="name">To</span><%= f.text_field :schedule_to %></li><br />
+		<li class="smallfield"><span class="name">Expire(minutes)</span><%= f.text_field :expire %></li><br />
+  		<li class="smallfield"><span class="name">Upload new Photo</span><%= f.file_field :avatar %></li><br />
   		<li class="button"><%= f.submit "Update" %></li>
 		<li class="textbox"><%= f.error_messages %></li>
  	</ul>
