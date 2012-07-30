@@ -32,9 +32,8 @@ ActiveRecord::Schema.define(:version => 20120722082740) do
   end
 
   create_table "items", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "user"
     t.integer  "category"
-    t.integer  "confirmed_order_id",  :default => 0
     t.string   "title"
     t.string   "description"
     t.string   "location"
@@ -43,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20120722082740) do
     t.integer  "deposit"
     t.date     "schedule_from"
     t.date     "schedule_to"
-    t.integer  "expire"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -95,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20120722082740) do
     t.string   "login",                             :null => false
     t.string   "email",                             :null => false
     t.string   "address",                           :null => false
+    t.string   "geo_location",                      :null => false
     t.string   "crypted_password",                  :null => false
     t.string   "password_salt",                     :null => false
     t.string   "persistence_token",                 :null => false

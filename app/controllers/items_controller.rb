@@ -24,6 +24,11 @@ class ItemsController < ApplicationController
       condition_values << '%'+params[:search][:title]+'%'
     end
     
+    if params[:search] and params[:search][:category]
+      condition_keys << 'category LIKE ?'
+      condition_values << '%'+params[:search][:category]+'%'
+    end
+    
     if params[:search] and not params[:search][:to].empty?
       condition_keys << "rental_price<=?"
       condition_values << params[:search][:to]

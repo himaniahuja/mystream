@@ -1,0 +1,13 @@
+<% if @item.user != current_user %>
+	Please login to continue.
+	<a href="/users/index">Log In</a>
+<% else %>
+	<%= render 'my_confirmed_items' %>
+	<%= render 'my_items' %>
+	<div class = footerBar>
+	<ul class="pageitem">
+	    <a href="/inbox">Inbox(<%= @numberOfUnreadMessages %>)</a> |
+	    <a href="/outbox"> Outbox</a>
+	</ul>
+	</div>
+<% end %>

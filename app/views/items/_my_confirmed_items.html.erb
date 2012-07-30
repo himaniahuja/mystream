@@ -1,0 +1,23 @@
+<% if not @confirmed_items.empty? %>
+<h1>Confirmed Items</h1>
+<div id="content">
+<ul>
+<% for item in @confirmed_items %>
+	<li><a href='<%= item_path(item) %>'>
+	<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
+	<span class="comment"><%= item.location %>
+		<% if current_user %>
+		,<%= item.estimate_distance_text current_user %>
+		<% end %>
+		<% if item.user == current_user %>
+		(<%=item.orders.size%> Orders)
+		<% end %>
+		</span>
+	<span class="name"><%= item.title%></span>
+	<span class="stars4"></span>
+	<span class="starcomment">Last Updated: <%= item.updated_at %></span>
+	<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
+<% end %>
+</ul>
+</div>
+<% end %>

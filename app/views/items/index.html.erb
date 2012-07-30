@@ -13,27 +13,10 @@
 	</div>
 
 	<div id="content">
-		<ul>
-		<% for item in @items %>
-			<li><a href='<%= item_path(item) %>'>
-			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-			<span class="comment"><%= item.location %> 
-				<% if current_user %>
-				,<%= item.estimate_distance_text current_user %>
-				<% end %>
-				<% if item.user == current_user %>
-				(<%=item.orders.size%> Orders)
-				<% end %>
-				</span>
-			<span class="name"><%= item.title%></span>
-			<span class="stars4"></span>
-			<span class="starcomment">Last Updated: <%= item.updated_at %></span>
-			<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
-		<% end %>
-		</ul>
 		<form action="/items<%if params[:myitem]%>?myitems=1<%end%>">
 			<% if params[:search] %>
 			Title: <%= text_field(:search, :title, :size => 20, :value => params[:search][:title]) %>
+			Category: <%= text_field(:search, :category, :size => 20, :value => params[:search][:category]) %>
 			Price from <%= text_field(:search, :from, :size => 10, :value => params[:search][:from]) %> to
 					   <%= text_field(:search, :to, :size => 10, :value =>params[:search][:to])%>
 			<% else %>
@@ -45,40 +28,28 @@
 			<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
 			<%= submit_tag 'Search' %>
 		</form>
+		<ul>
+		<% for item in @items %>
+			<li><a href='<%= item_path(item) %>'>
+			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
+			<span class="comment"><%= item.location %> 
+			<span class="name"><%= item.title%></span>
+			<span class="stars4"></span>
+			<span class="starcomment">Last Updated: <%= item.updated_at %></span>
+			<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
+		<% end %>
+		</ul>
 	</div>
 	
-	<!--Refactor this -->
-	<% if not @confirmed_items.empty? %>
-	<h1>Confirmed Items</h1>
-	<div id="content">
-	<ul>
-	<% for item in @confirmed_items %>
-		<li><a href='<%= item_path(item) %>'>
-		<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-		<span class="comment"><%= item.location %>
-			<% if current_user %>
-			,<%= item.estimate_distance_text current_user %>
-			<% end %>
-			<% if item.user == current_user %>
-			(<%=item.orders.size%> Orders)
-			<% end %>
-			</span>
-		<span class="name"><%= item.title%></span>
-		<span class="stars4"></span>
-		<span class="starcomment">Last Updated: <%= item.updated_at %></span>
-		<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
-	<% end %>
+	<!--MY DASHBOARD -->
+<% if current_user %>
+	<a href="my_dashboard.html">My Dashboard</a></div>
+	<div class = footerBar>
+	<ul class="pageitem">
+	    <a href="/inbox">Inbox(<%= @numberOfUnreadMessages %>)</a> |
+	    <a href="/outbox"> Outbox</a>
 	</ul>
 	</div>
-	<% end %>
-</div>
-
-<div class = footerBar>
-<ul class="pageitem">
-
-    <a href="/inbox">Inbox(<%= @numberOfUnreadMessages %>)</a> |
-    <a href="/outbox"> Outbox</a>
-</ul>
-</div>
+<%end%>
 
 </body>
