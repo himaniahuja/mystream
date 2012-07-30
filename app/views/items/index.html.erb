@@ -1,12 +1,3 @@
-<script type="text/javascript">
-  var path=
-	<% if params[:myitems] %>
-		"/items?myitems=1&"
-	<% else %>
-		"/items?"
-	<% end %>;
-</script>
-
 <body class="applist">
 <div id="topbar">
   <div id="leftnav">
@@ -40,9 +31,20 @@
 			<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
 		<% end %>
 		</ul>
-		<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by]), 
-			:onchange => "var r=document.getElementById('rank_by').value; 
-			window.location=path+'rank_by='+r")%>
+		<form action="/items<%if params[:myitem]%>?myitems=1<%end%>">
+			<% if params[:search] %>
+			Title: <%= text_field(:search, :title, :size => 20, :value => params[:search][:title]) %>
+			Price from <%= text_field(:search, :from, :size => 10, :value => params[:search][:from]) %> to
+					   <%= text_field(:search, :to, :size => 10, :value =>params[:search][:to])%>
+			<% else %>
+			Title: <%= text_field(:search, :title, :size => 20) %>
+			Price from <%= text_field(:search, :from, :size => 10) %> to
+					   <%= text_field(:search, :to, :size => 10 )%>
+			<% end %>
+	
+			<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
+			<%= submit_tag 'Search' %>
+		</form>
 	</div>
 	
 	<!--Refactor this -->

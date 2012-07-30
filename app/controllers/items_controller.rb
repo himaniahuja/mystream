@@ -2,18 +2,42 @@ class ItemsController < ApplicationController
   before_filter :require_user, :only => [:new, :create, :edit, :update]
   
   def index
+    
     rank_by = "updated_at desc"
     if params[:rank_by]
       rank_by = params[:rank_by]
     end
     
-    conditions = ['confirmed_order_id=0']
+    condition_keys = ['confirmed_order_id=?']
+    condition_values = [0]
+
     if params[:myitems]
       if not require_user
         return
       end
-      conditions = ['confirmed_order_id=0 and user_id=?', current_user.id]
+      condition_keys << 'user_id=?'
+      condition_values << current_user.id
     end
+    
+    if params[:search] and params[:search][:title]
+      condition_keys << 'title LIKE ?'
+      condition_values << '%'+params[:search][:title]+'%'
+    end
+    
+    if params[:search] and not params[:search][:to].empty?
+      condition_keys << "rental_price<=?"
+      condition_values << params[:search][:to]
+    end
+    
+    if params[:search] and not params[:search][:from].empty?
+      condition_keys << "rental_price>=?"
+      condition_values << params[:search][:from]
+    end
+    
+    conditions = [condition_keys.join(" AND ")] + condition_values
+    puts '2' * 100
+    puts conditions
+    puts '1' * 100
       
     if rank_by == 'distance'
       if not require_user
