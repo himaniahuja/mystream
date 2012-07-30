@@ -1,3 +1,15 @@
+<div id="topbar">
+  <div id="leftnav">
+    <a href="/users">My Profile</a>
+    <a href= "/items?myitems=1"> My Posts</a></div>
+  </div>
+</div>
+	</div>
+
+	<div id="rightnav">
+			<a href="/items/new">Add Item</a></div>
+	</div>
+
 <% if @item.user != current_user %>
 	Please login to continue.
 	<a href="/users/index">Log In</a>
