@@ -10,7 +10,9 @@ Ishare::Application.routes.draw do
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   match 'signup' => 'users#new', :as => :signup
+  match '/dashboard' => 'users#dashboard'
   match '/order/confirm/:id' => 'orders#confirm'
+  match '' => 'items#index'
   
   
 resources :users  do

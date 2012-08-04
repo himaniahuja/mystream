@@ -59,24 +59,6 @@ class ItemsController < ApplicationController
         :order => rank_by
       )
     end
-    
-    @confirmed_items = []
-    if current_user
-      # get all the confirmed items
-      @confirmed_items = Item.find(:all,
-        :conditions => ['confirmed_order_id>0 and user_id=?', current_user.id]
-      )
-    end
-
-    @messages = current_user.received_messages
-    @numberOfUnreadMessages = 0
-    @messages.each do |m|
-      if !m.recipient_delete
-          if !m.opened
-            @numberOfUnreadMessages += 1
-          end
-      end
-    end
 
   end
   
@@ -129,7 +111,6 @@ class ItemsController < ApplicationController
 
   def user_profile
     @user = User.find(params[:user_id])
-
   end
   
 end

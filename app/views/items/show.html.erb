@@ -7,17 +7,6 @@
     });
 </script>
 
-<div id="topbar">
-  <div id="leftnav">
-    <a href="/index"><img alt="home" src="/images/home.png"/></a>
-  </div>
-  <div id="rightnav">
-    <% if @item.confirmed_order.nil? %>
-        <%= link_to 'Edit', edit_item_path(@item) %>
-    <% end %>
-  </div>
-</div>
-
 <div id="content">
   <div class="itemdetail">
     <ul class="pageitem">
@@ -112,6 +101,3 @@
     </ul>
   </div>
 </div>
-
-
-

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:index, :show, :edit, :update,
     :inbox, :outbox, :sendMessage, :createMessage, :showMessage, 
-    :showSentMessage, :replyMessage, :createReplyMessage, :deleteMessage]
+    :showSentMessage, :replyMessage, :createReplyMessage, :deleteMessage, :dashboard]
 
   def new
     @user = User.new
@@ -47,6 +47,10 @@ class UsersController < ApplicationController
     else
       render :action => :edit
     end
+  end
+  
+  def dashboard
+    
   end
 
   def inbox

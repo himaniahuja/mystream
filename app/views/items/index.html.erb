@@ -1,62 +1,11 @@
-<body class="applist">
-<div id="topbar">
-  <div id="leftnav">
-    <a href="index.html"><img alt="home" src="images/home.png"/></a>
-    <a href="/users">My Profile</a>
-    <a href= "/items?myitems=1"> My Posts</a></div>
-  </div>
-</div>
-	</div>
-
-	<div id="rightnav">
-			<a href="/items/new">Add Item</a></div>
-	</div>
-
-	<div id="content">
-		<ul>
-		<% for item in @items %>
-			<li><a href='<%= item_path(item) %>'>
-			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-			<span class="comment"><%= item.location %> 
-				<% if current_user %>
-				,<%= item.estimate_distance_text current_user %>
-				<% end %>
-				<% if item.user == current_user %>
-				(<%=item.orders.size%> Orders)
-				<% end %>
-				</span>
-			<span class="name"><%= item.title%></span>
-			<span class="stars4"></span>
-			<span class="starcomment">Last Updated: <%= item.updated_at %></span>
-			<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
-		<% end %>
-		</ul>
-		<form action="/items<%if params[:myitem]%>?myitems=1<%end%>">
-			<% if params[:search] %>
-			Title: <%= text_field(:search, :title, :size => 20, :value => params[:search][:title]) %>
-			Category: <%= text_field(:search, :category, :size => 20, :value => params[:search][:category]) %>
-			Price from <%= text_field(:search, :from, :size => 10, :value => params[:search][:from]) %> to
-					   <%= text_field(:search, :to, :size => 10, :value =>params[:search][:to])%>
-			<% else %>
-			Title: <%= text_field(:search, :title, :size => 20) %>
-			Price from <%= text_field(:search, :from, :size => 10) %> to
-					   <%= text_field(:search, :to, :size => 10 )%>
-			<% end %>
-
-			<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
-			<%= submit_tag 'Search' %>
-		</form>
-	</div>
-
-	<!--Refactor this -->
-	<% if not @confirmed_items.empty? %>
-	<h1>Confirmed Items</h1>
-	<div id="content">
+<script type="text/javascript">
+$("body").addClass('applist')
+</script>
+<div id="content">
 	<ul>
-	<% for item in @confirmed_items %>
-		<li><a href='<%= item_path(item) %>'>
+	<% for item in @items %><li><a href='<%= item_path(item) %>'>
 		<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-		<span class="comment"><%= item.location %>
+		<span class="comment"><%= item.location %> 
 			<% if current_user %>
 			,<%= item.estimate_distance_text current_user %>
 			<% end %>
@@ -70,16 +19,19 @@
 		<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
 	<% end %>
 	</ul>
-	</div>
-	<% end %>
+	<form action="/items<%if params[:myitem]%>?myitems=1<%end%>">
+		<% if params[:search] %>
+			Title: <%= text_field(:search, :title, :size => 20, :value => params[:search][:title]) %>
+			Category: <%= text_field(:search, :category, :size => 20, :value => params[:search][:category]) %>
+			Price from <%= text_field(:search, :from, :size => 10, :value => params[:search][:from]) %> to
+					   <%= text_field(:search, :to, :size => 10, :value =>params[:search][:to])%>
+		<% else %>
+		Title: <%= text_field(:search, :title, :size => 20) %>
+		Price from <%= text_field(:search, :from, :size => 10) %> to
+				   <%= text_field(:search, :to, :size => 10 )%>
+		<% end %>
+
+		<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
+		<%= submit_tag 'Search' %>
+	</form>
 </div>
-
-<div class = footerBar>
-<ul class="pageitem">
-
-    <a href="/inbox">Inbox(<%= @numberOfUnreadMessages %>)</a> |
-    <a href="/outbox"> Outbox</a>
-</ul>
-</div>
-
-</body>
