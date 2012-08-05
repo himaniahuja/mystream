@@ -6,16 +6,18 @@
           <h3><%= @user.login %></h3>
         </li>
       </div>
+	  <li>
+        <i>
+          <%= @user.email %>
+        </i>
+	  </li>
+	  <li><br/></li>
       <li>
         <i>
-          <%= @user.address %>
+          <%= @user.get_state %>
         </i>
       </li>
-      <li>
-        <i>
-          <%=  %>
-        </i>
-      </li>
+      
 
       </br>
     </ul>
