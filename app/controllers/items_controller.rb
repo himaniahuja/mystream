@@ -1,19 +1,43 @@
 class ItemsController < ApplicationController
-  before_filter :require_user, :only => [:new, :create, :edit, :update]
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :posted_items,
+      :confirmed_items, :ordered]
   
   def index
+    
     rank_by = "updated_at desc"
     if params[:rank_by]
       rank_by = params[:rank_by]
     end
     
-    conditions = ['confirmed_order_id=0']
-    if params[:myitems]
-      if not require_user
-        return
-      end
-      conditions = ['confirmed_order_id=0 and user_id=?', current_user.id]
+    condition_keys = ['confirmed_order_id=?']
+    condition_values = [0]
+
+    if params[:search] and params[:search][:title]
+      condition_keys << 'title LIKE ?'
+      condition_values << '%'+params[:search][:title]+'%'
     end
+    
+    if params[:search] and params[:search][:category]
+      condition_keys << 'category LIKE ?'
+      condition_values << '%'+params[:search][:category]+'%'
+    end
+    
+    if params[:search] and not params[:search][:to].empty?
+      condition_keys << "rental_price<=?"
+      condition_values << params[:search][:to]
+    end
+    
+    if params[:search] and not params[:search][:from].empty?
+      condition_keys << "rental_price>=?"
+      condition_values << params[:search][:from]
+    end
+    
+    if params[:category] and params[:category] != '0'
+      condition_keys << "category=?"
+      condition_values << params[:category]
+    end
+    
+    conditions = [condition_keys.join(" AND ")] + condition_values
       
     if rank_by == 'distance'
       if not require_user
@@ -29,24 +53,6 @@ class ItemsController < ApplicationController
         :conditions => conditions,
         :order => rank_by
       )
-    end
-    
-    @confirmed_items = []
-    if current_user
-      # get all the confirmed items
-      @confirmed_items = Item.find(:all,
-        :conditions => ['confirmed_order_id>0 and user_id=?', current_user.id]
-      )
-    end
-
-    @messages = current_user.received_messages
-    @numberOfUnreadMessages = 0
-    @messages.each do |m|
-      if !m.recipient_delete
-          if !m.opened
-            @numberOfUnreadMessages += 1
-          end
-      end
     end
 
   end
@@ -93,14 +99,28 @@ class ItemsController < ApplicationController
        end
     end
   end
-
-  def myitems
-	  @items = Item.where(:user => current_user.id)
-  end
-
+  
   def user_profile
     @user = User.find(params[:user_id])
-
+  end
+  
+  def posted
+    @items = Item.where(:user_id => current_user.id)
+    render :template => 'items/items.html.erb'
+  end
+  
+  def confirmed
+    @items = Item.find(:all,
+      :conditions => ['confirmed_order_id>0 and user_id=?', current_user.id]
+    )
+    render :template => 'items/items.html.erb'
+  end
+  
+  def ordered
+    @items = Item.find_by_sql(
+      'select items.* from items, orders where items.confirmed_order_id=orders.id and orders.user_id='+current_user.id.to_s
+    )    
+    render :template => 'items/items.html.erb'
   end
   
 end

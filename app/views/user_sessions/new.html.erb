@@ -1,14 +1,3 @@
-<body>
-
-<div id="topbar">
-	<div id="leftnav">
-		<a href="index.html"><img alt="home" src="images/home.png" /></a>
-	</div>
-	<div id="rightnav">
-		<a href="/signup">Signup</a></div>
-	</div>
-</div>
-
 <div id="content">
 	<%= form_for @user_session, :url => {:action => "create"} do |f| %>
 		<span class="graytitle">Login</span>
@@ -17,12 +6,7 @@
 			<li class="smallfield"><span class="name">Password</span><%= f.password_field :password, :placeholder=>"Password" %><br />
 			<li class="checkbox"><span class="name">Remember Me</span><%= f.check_box :remember_me %><br />
 			<li class="button"><%= f.submit "Login" %></li>
-		</ul>
-		
-		<ul class="pageitem">
 			<li class="textbox"><%= f.error_messages %></li>
 		</ul>
 	<% end %>
 </div>
-
-</body>

@@ -11,8 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120714194531) do
+ActiveRecord::Schema.define(:version => 20120722082740) do
 
+  create_table "comments", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "owner_id"
+    t.integer  "receiver_id"
+    t.integer  "rating"
+    t.text     "comment_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "gmaps", :force => true do |t|
     t.string   "from"
@@ -23,9 +32,8 @@ ActiveRecord::Schema.define(:version => 20120714194531) do
   end
 
   create_table "items", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "user"
     t.integer  "category"
-    t.integer  "confirmed_order_id",  :default => 0
     t.string   "title"
     t.string   "description"
     t.string   "location"
@@ -85,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20120714194531) do
     t.string   "login",                             :null => false
     t.string   "email",                             :null => false
     t.string   "address",                           :null => false
+    t.string   "geo_location",                      :null => false
     t.string   "crypted_password",                  :null => false
     t.string   "password_salt",                     :null => false
     t.string   "persistence_token",                 :null => false
@@ -98,5 +107,9 @@ ActiveRecord::Schema.define(:version => 20120714194531) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
 
 end

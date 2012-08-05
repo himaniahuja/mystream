@@ -34,8 +34,7 @@ class OrdersController < ApplicationController
     end
     
     @item.confirmed_order = @order
-    
-    #@item.save
+    @item.save
     redirect_to :controller => "items", :action => "index"
   end
   

@@ -7,17 +7,6 @@
     });
 </script>
 
-<div id="topbar">
-  <div id="leftnav">
-    <a href="/index"><img alt="home" src="/images/home.png"/></a>
-  </div>
-  <div id="rightnav">
-    <% if @item.confirmed_order.nil? %>
-        <%= link_to 'Edit', edit_item_path(@item) %>
-    <% end %>
-  </div>
-</div>
-
 <div id="content">
   <div class="itemdetail">
     <ul class="pageitem">
@@ -48,7 +37,16 @@
         Available on</br>
         <%= @item.schedule_from.strftime("%B %d %Y (%a)") %> - <%= @item.schedule_to.strftime("%B %d %Y (%a)") %>
       </li>
+<<<<<<< HEAD
 
+=======
+      </br>
+	  <li>
+	  	<% if @item.confirmed_order %>
+			--Confirmed to <%= link_to @item.confirmed_order.user.login, user_profile_path(@item.confirmed_order.user) %> from <%=@item.confirmed_order.rent_from%> to <%=@item.confirmed_order.rent_to%>
+	    <% end %>
+	  </li>
+>>>>>>> d78592da54974a4b19921b5a8c6cad678447889b
       <table>
         <tr>
           <td>
@@ -112,6 +110,3 @@
     </ul>
   </div>
 </div>
-
-
-

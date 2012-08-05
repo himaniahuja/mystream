@@ -1,10 +1,6 @@
 module ItemsHelper
   def parse_category(category)
-    if category == 1
-      return "Car"
-    elsif category == 2
-      return "Boat"
-    end
+    return get_reverse_categories[category]
   end
   
   def parse_condition(condition)
@@ -16,4 +12,12 @@ module ItemsHelper
       return "Good"
     end
   end
+  
+  def get_search_categories
+    c = {"None" => 0}
+    get_categories.each do |k, v|
+      c[k] = v
+    end
+  end
+  
 end

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:index, :show, :edit, :update,
     :inbox, :outbox, :sendMessage, :createMessage, :showMessage, 
-    :showSentMessage, :replyMessage, :createReplyMessage, :deleteMessage]
+    :showSentMessage, :replyMessage, :createReplyMessage, :deleteMessage, :dashboard]
 
   def new
     @user = User.new
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    render :template=>'users/index.html'
   end
 
   # GET /users/1/edit
@@ -46,6 +47,18 @@ class UsersController < ApplicationController
       redirect_to :action => :index
     else
       render :action => :edit
+    end
+  end
+  
+  def dashboard
+    messages = current_user.received_messages
+    @numberOfUnreadMessages = 0
+    messages.each do |m|
+      if !m.recipient_delete
+        if !m.opened
+          @numberOfUnreadMessages += 1
+        end
+      end
     end
   end
 

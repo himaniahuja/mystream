@@ -1,11 +1,7 @@
 <script type="text/javascript">
-  var path=
-	<% if params[:myitems] %>
-		"/items?myitems=1&"
-	<% else %>
-		"/items?"
-	<% end %>;
+$("body").addClass('applist')
 </script>
+<<<<<<< HEAD
 
 <body class="applist">
 <div id="topbar">
@@ -49,11 +45,13 @@
 	<% if not @confirmed_items.empty? %>
 	<h1>Confirmed Items</h1>
 	<div id="content">
+=======
+<div id="content">
+>>>>>>> d78592da54974a4b19921b5a8c6cad678447889b
 	<ul>
-	<% for item in @confirmed_items %>
-		<li><a href='<%= item_path(item) %>'>
+	<% for item in @items %><li><a href='<%= item_path(item) %>'>
 		<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-		<span class="comment"><%= item.location %>
+		<span class="comment"><%= item.location %> 
 			<% if current_user %>
 			,<%= item.estimate_distance_text current_user %>
 			<% end %>
@@ -67,16 +65,48 @@
 		<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
 	<% end %>
 	</ul>
-	</div>
-	<% end %>
+	<form action="/items">
+		<ul class="pageitem">
+		<% if params[:search] %>
+		<li class="fielditem">
+					  <span class="fielddesc">Title</span>
+				      <%= text_field(:search, :title, :size => 20, :value => params[:search][:title], :class => 'fieldinput') %>
+				    </li>
+				    <li class="fielditem">
+					  <span class="fielddesc">Price from</span>
+				      <%= text_field(:search, :from, :size => 10, :value => params[:search][:from], :class => 'fieldinput') %>
+				    </li>
+					<li class="fielditem">
+					  <span class="fielddesc">Price to</span>
+				      <%= text_field(:search, :to, :size => 10, :value => params[:search][:to], :class => 'fieldinput') %>
+				    </li>
+		<% else %>
+		  
+			<li class="fielditem">
+			  <span class="fielddesc">Title</span>
+		      <%= text_field(:search, :title, :size => 20, :class => 'fieldinput') %>
+		    </li>
+		    <li class="fielditem">
+			  <span class="fielddesc">Price from</span>
+		      <%= text_field(:search, :from, :size => 10, :class => 'fieldinput') %>
+		    </li>
+			<li class="fielditem">
+			  <span class="fielddesc">Price to</span>
+		      <%= text_field(:search, :to, :size => 10, :class => 'fieldinput') %>
+		    </li>
+		  
+		<% end %>
+        <li class="fielditem">
+	      <span class="fielddesc">Rank By</span> 
+		  <%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
+		</li>
+		<li class="fielditem">
+	      <span class="fielddesc">Search Category</span>
+		  <%= select_tag(:category, options_for_select(get_search_categories, params[:category])) %>
+		</li>
+		<li class="fielditem">
+		<%= submit_tag 'Search', :class => 'submit' %>
+		</li>
+		</ul>
+	</form>
 </div>
-
-<div class = footerBar>
-<ul class="pageitem">
-
-    <a href="/inbox">Inbox(<%= @numberOfUnreadMessages %>)</a> |
-    <a href="/outbox"> Outbox</a>
-</ul>
-</div>
-
-</body>
