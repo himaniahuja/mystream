@@ -32,6 +32,7 @@ $("body").addClass('applist')
 		<% end %>
 
 		<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
+		<%= select_tag(:category, options_for_select(get_search_categories, params[:category])) %>
 		<%= submit_tag 'Search' %>
 	</form>
 </div>

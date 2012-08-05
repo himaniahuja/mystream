@@ -14,8 +14,7 @@ $(function() {
 	<span class="graytitle">Category</span>
   	<ul class="pageitem">
 		<li class="select">
- 			<%= f.select :category, options_for_select({"car" => 1, "boat" => 2},
-  			 	:selected => @item[:category]) %>
+ 			<%= f.select :category, options_for_select(get_categories, :selected => @item[:category]) %>
   		</li>
   	</ul>
  	<span class="graytitle">Condition</span>

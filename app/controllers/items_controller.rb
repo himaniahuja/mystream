@@ -32,6 +32,11 @@ class ItemsController < ApplicationController
       condition_values << params[:search][:from]
     end
     
+    if params[:category] and params[:category] != '0'
+      condition_keys << "category=?"
+      condition_values << params[:category]
+    end
+    
     conditions = [condition_keys.join(" AND ")] + condition_values
       
     if rank_by == 'distance'
