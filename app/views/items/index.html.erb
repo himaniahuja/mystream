@@ -1,53 +1,7 @@
 <script type="text/javascript">
 $("body").addClass('applist')
 </script>
-<<<<<<< HEAD
-
-<body class="applist">
-<div id="topbar">
-  <div id="leftnav">
-    <a href="index.html"><img alt="home" src="images/home.png"/></a>
-    <a href="/users">Me</a>
-    <a href= "/items?myitems=1"> My Posts</a></div>
-  </div>
-</div>
-	</div>
-
-	<div id="rightnav">
-			<a href="/items/new">New</a></div>
-	</div>
-
-	<div id="content">
-		<ul>
-		<% for item in @items %>
-			<li><a href='<%= item_path(item) %>'>
-			<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
-			<span class="comment"><%= item.location %> 
-				<% if current_user %>
-				,<%= item.estimate_distance_text current_user %>
-				<% end %>
-				<% if item.user == current_user %>
-				(<%=item.orders.size%> Orders)
-				<% end %>
-				</span>
-			<span class="name"><%= item.title%></span>
-			<span class="stars4"></span>
-			<span class="starcomment"><%= item.updated_at.strftime("%B %d %Y (%a)") %></span>
-			<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
-		<% end %>
-		</ul>
-		<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by]), 
-			:onchange => "var r=document.getElementById('rank_by').value; 
-			window.location=path+'rank_by='+r")%>
-	</div>
-	
-	<!--Refactor this -->
-	<% if not @confirmed_items.empty? %>
-	<h1>Confirmed Items</h1>
-	<div id="content">
-=======
 <div id="content">
->>>>>>> d78592da54974a4b19921b5a8c6cad678447889b
 	<ul>
 	<% for item in @items %><li><a href='<%= item_path(item) %>'>
 		<span class="image" style="background-image: url('<%= item.avatar.url(:thumb) %>')"></span>
@@ -81,7 +35,7 @@ $("body").addClass('applist')
 				      <%= text_field(:search, :to, :size => 10, :value => params[:search][:to], :class => 'fieldinput') %>
 				    </li>
 		<% else %>
-		  
+
 			<li class="fielditem">
 			  <span class="fielddesc">Title</span>
 		      <%= text_field(:search, :title, :size => 20, :class => 'fieldinput') %>
@@ -94,7 +48,7 @@ $("body").addClass('applist')
 			  <span class="fielddesc">Price to</span>
 		      <%= text_field(:search, :to, :size => 10, :class => 'fieldinput') %>
 		    </li>
-		  
+
 		<% end %>
         <li class="fielditem">
 	      <span class="fielddesc">Rank By</span> 

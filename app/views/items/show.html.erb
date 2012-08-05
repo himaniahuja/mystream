@@ -37,16 +37,12 @@
         Available on</br>
         <%= @item.schedule_from.strftime("%B %d %Y (%a)") %> - <%= @item.schedule_to.strftime("%B %d %Y (%a)") %>
       </li>
-<<<<<<< HEAD
-
-=======
       </br>
 	  <li>
 	  	<% if @item.confirmed_order %>
 			--Confirmed to <%= link_to @item.confirmed_order.user.login, user_profile_path(@item.confirmed_order.user) %> from <%=@item.confirmed_order.rent_from%> to <%=@item.confirmed_order.rent_to%>
 	    <% end %>
 	  </li>
->>>>>>> d78592da54974a4b19921b5a8c6cad678447889b
       <table>
         <tr>
           <td>
