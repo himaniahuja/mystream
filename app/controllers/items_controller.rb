@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_filter :require_user, :only => [:new, :create, :edit, :update]
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :posted_items,
+      :confirmed_items, :ordered]
   
   def index
     
@@ -11,14 +12,6 @@ class ItemsController < ApplicationController
     condition_keys = ['confirmed_order_id=?']
     condition_values = [0]
 
-    if params[:myitems]
-      if not require_user
-        return
-      end
-      condition_keys << 'user_id=?'
-      condition_values << current_user.id
-    end
-    
     if params[:search] and params[:search][:title]
       condition_keys << 'title LIKE ?'
       condition_values << '%'+params[:search][:title]+'%'
@@ -40,9 +33,6 @@ class ItemsController < ApplicationController
     end
     
     conditions = [condition_keys.join(" AND ")] + condition_values
-    puts '2' * 100
-    puts conditions
-    puts '1' * 100
       
     if rank_by == 'distance'
       if not require_user
@@ -104,13 +94,28 @@ class ItemsController < ApplicationController
        end
     end
   end
-
-  def myitems
-	  @items = Item.where(:user => current_user.id)
-  end
-
+  
   def user_profile
     @user = User.find(params[:user_id])
+  end
+  
+  def posted
+    @items = Item.where(:user_id => current_user.id)
+    render :template => 'items/items.html.erb'
+  end
+  
+  def confirmed
+    @items = Item.find(:all,
+      :conditions => ['confirmed_order_id>0 and user_id=?', current_user.id]
+    )
+    render :template => 'items/items.html.erb'
+  end
+  
+  def ordered
+    @items = Item.find_by_sql(
+      'select items.* from items, orders where items.confirmed_order_id=orders.id and orders.user_id='+current_user.id.to_s
+    )    
+    render :template => 'items/items.html.erb'
   end
   
 end

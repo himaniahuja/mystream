@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    render :template=>'users/index.html'
   end
 
   # GET /users/1/edit
@@ -50,7 +51,15 @@ class UsersController < ApplicationController
   end
   
   def dashboard
-    
+    messages = current_user.received_messages
+    @numberOfUnreadMessages = 0
+    messages.each do |m|
+      if !m.recipient_delete
+        if !m.opened
+          @numberOfUnreadMessages += 1
+        end
+      end
+    end
   end
 
   def inbox

@@ -19,7 +19,7 @@ $("body").addClass('applist')
 		<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
 	<% end %>
 	</ul>
-	<form action="/items<%if params[:myitem]%>?myitems=1<%end%>">
+	<form action="/items">
 		<% if params[:search] %>
 			Title: <%= text_field(:search, :title, :size => 20, :value => params[:search][:title]) %>
 			Category: <%= text_field(:search, :category, :size => 20, :value => params[:search][:category]) %>
