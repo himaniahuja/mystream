@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
 
   def index
     @receiver_id = params[:format]
+    @receiver = User.find(@receiver_id)
     @comments = Comment.where(:receiver_id => @receiver_id).order("created_at DESC")
     @comment_Hash = Hash.new
 

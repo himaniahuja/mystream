@@ -137,7 +137,7 @@ class UsersController < ApplicationController
     @recipient_id = @message.sent_messageable_id
     @recipient = User.find(@recipient_id)
 
-    @topic = "Re: #{@message.topic}"
+    @topic = "#{@message.topic}"
     @body = "\n\n\n\n\n\n--------------------------------------------\n\nOn " +
         @message.created_at.strftime("%B %d %Y (%a)") + " " +
         @recipient.login + " wrote :  \n " + @message.body

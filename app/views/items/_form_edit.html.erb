@@ -16,7 +16,9 @@ $(function() {
 	<span class="graytitle">Category</span>
   	<ul class="pageitem">
 		<li class="select">
- 			<%= f.select :category, options_for_select({"car" => 1, "boat" => 2},
+ 			<%= f.select :category, options_for_select(
+                  {"Jet Ski / Watercraft" => 1, "ATV / UTV" => 2, "RV / Trailer" => 3, "Snow Mobile" => 4,
+                   "Canoe / Kayak" =>5, "Golf Cart" => 6,"Scooter / Dirt Bike" =>7,"Light Weight Boat" => 8},
   			 	:selected => @item[:category]) %>
   		</li>
   	</ul>

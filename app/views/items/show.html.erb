@@ -34,21 +34,21 @@
       <li>
         <i><%= @item.description %></i>
       </li>
-      </br>
+
       <li>
         <%= parse_condition(@item.condition) %> condition
       </li>
-      </br>
+
       <li><i> -- Posted by
         <%= link_to @item.user.login, user_profile_path(@item.user_id) %>
 
       </i></li>
-      <br/>
+
       <li>
         Available on</br>
         <%= @item.schedule_from.strftime("%B %d %Y (%a)") %> - <%= @item.schedule_to.strftime("%B %d %Y (%a)") %>
       </li>
-      </br>
+
       <table>
         <tr>
           <td>

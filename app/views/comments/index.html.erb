@@ -4,7 +4,7 @@
     <%= link_to 'Back', user_profile_path(@receiver_id) %>
   </div>
 </div>
-
+<h3> Reviews for <%= @receiver.login %> </h3>
 <div id="content">
   <div class="itemdetail">
     <% if @comment_Hash.empty? %>
