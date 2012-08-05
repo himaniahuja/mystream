@@ -20,19 +20,47 @@ $("body").addClass('applist')
 	<% end %>
 	</ul>
 	<form action="/items">
+		<ul class="pageitem">
 		<% if params[:search] %>
-			Title: <%= text_field(:search, :title, :size => 20, :value => params[:search][:title]) %>
-			Category: <%= text_field(:search, :category, :size => 20, :value => params[:search][:category]) %>
-			Price from <%= text_field(:search, :from, :size => 10, :value => params[:search][:from]) %> to
-					   <%= text_field(:search, :to, :size => 10, :value =>params[:search][:to])%>
+		<li class="fielditem">
+					  <span class="fielddesc">Title</span>
+				      <%= text_field(:search, :title, :size => 20, :value => params[:search][:title], :class => 'fieldinput') %>
+				    </li>
+				    <li class="fielditem">
+					  <span class="fielddesc">Price from</span>
+				      <%= text_field(:search, :from, :size => 10, :value => params[:search][:from], :class => 'fieldinput') %>
+				    </li>
+					<li class="fielditem">
+					  <span class="fielddesc">Price to</span>
+				      <%= text_field(:search, :to, :size => 10, :value => params[:search][:to], :class => 'fieldinput') %>
+				    </li>
 		<% else %>
-		Title: <%= text_field(:search, :title, :size => 20) %>
-		Price from <%= text_field(:search, :from, :size => 10) %> to
-				   <%= text_field(:search, :to, :size => 10 )%>
+		  
+			<li class="fielditem">
+			  <span class="fielddesc">Title</span>
+		      <%= text_field(:search, :title, :size => 20, :class => 'fieldinput') %>
+		    </li>
+		    <li class="fielditem">
+			  <span class="fielddesc">Price from</span>
+		      <%= text_field(:search, :from, :size => 10, :class => 'fieldinput') %>
+		    </li>
+			<li class="fielditem">
+			  <span class="fielddesc">Price to</span>
+		      <%= text_field(:search, :to, :size => 10, :class => 'fieldinput') %>
+		    </li>
+		  
 		<% end %>
-
-		<%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
-		<%= select_tag(:category, options_for_select(get_search_categories, params[:category])) %>
-		<%= submit_tag 'Search' %>
+        <li class="fielditem">
+	      <span class="fielddesc">Rank By</span> 
+		  <%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
+		</li>
+		<li class="fielditem">
+	      <span class="fielddesc">Search Category</span>
+		  <%= select_tag(:category, options_for_select(get_search_categories, params[:category])) %>
+		</li>
+		<li class="fielditem">
+		<%= submit_tag 'Search', :class => 'submit' %>
+		</li>
+		</ul>
 	</form>
 </div>

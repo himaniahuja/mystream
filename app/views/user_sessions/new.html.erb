@@ -6,9 +6,6 @@
 			<li class="smallfield"><span class="name">Password</span><%= f.password_field :password, :placeholder=>"Password" %><br />
 			<li class="checkbox"><span class="name">Remember Me</span><%= f.check_box :remember_me %><br />
 			<li class="button"><%= f.submit "Login" %></li>
-		</ul>
-		
-		<ul class="pageitem">
 			<li class="textbox"><%= f.error_messages %></li>
 		</ul>
 	<% end %>
