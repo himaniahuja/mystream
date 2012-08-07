@@ -9,8 +9,10 @@ class CommentsController < ApplicationController
     if @item.confirmed_order
         @confirmed_order =  @item.confirmed_order
         @sender = @confirmed_order.user
-        if (@sender  == current_user)  ||  (@item.user == current_user)
-           @can_write = true
+        @comments = Comment.where(:item_id => @item, :owner_id => current_user.id).first
+
+        if (@sender  == current_user || @item.user == current_user) && !@comments
+          @can_write = true
         end
     end
 
