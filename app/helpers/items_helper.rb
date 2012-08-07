@@ -14,10 +14,11 @@ module ItemsHelper
   end
   
   def get_search_categories
-    c = {"None" => 0}
+    c = {"Search by categories" => 0}
     get_categories.each do |k, v|
       c[k] = v
     end
+    return c
   end
   
 end

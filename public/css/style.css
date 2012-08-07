@@ -145,7 +145,6 @@ text-align: -webkit-auto;
 
 .fielditem .submit {
 	-webkit-border-radius: 5px;
-	-webkit-border-radius: 5px;
 	border: 1px solid #6D7E91 !important;
 	text-overflow: ellipsis;
 	top:10px;
@@ -167,7 +166,7 @@ text-align: -webkit-auto;
 
 .pageitem {
 -webkit-border-radius: 8px;
-background-color: #aaa;
+background-color: #CCC;
 /*border: #878787 solid 1px;*/
 font-size: 12pt;
 overflow: hidden;
@@ -187,7 +186,9 @@ list-style: none;
 	height: 43px;
 	overflow: hidden;
 	border-top: 1px solid #878787;
-	background: #aaa;
+	background: #CCC;
 	width: auto;
 }
+
+
 

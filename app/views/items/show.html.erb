@@ -20,13 +20,13 @@
           <h3><%= @item.title %></h3>
         </li>
       </div>
+	  <li><b>Description:</b></li>
       <li>
         <i><%= @item.description %></i>
       </li>
       </br>
-
       <li>
-        <%= parse_condition(@item.condition) %> condition
+        <b><%= parse_condition(@item.condition) %> condition</b>
       </li>
       </br>
 
@@ -37,7 +37,7 @@
       </br>
 
       <li>
-        Available on</br>
+      <b>Available on</b></br>
         <%= @item.schedule_from.strftime("%B %d %Y (%a)") %> - <%= @item.schedule_to.strftime("%B %d %Y (%a)") %>
       </li>
       </br>
@@ -48,7 +48,7 @@
 	  </li>
       <table>
         <tr>
-          <td>
+		  <td>
             <li><b>Category:</b> <%= parse_category @item.category %></li>
           </td>
           <td>
@@ -85,12 +85,14 @@
             <% end %>
         <% end %>
     <% elsif @item.confirmed_order.nil? %>
-        <ul class="pageitem">
+        <%if @item.orders.length > 0%>
+		<ul class="pageitem">
           <% for order in @item.orders %>
               <li>From: <%= order.rent_from %> to: <%= order.rent_to %> by <%= order.user.login %>
                 <br/><a href="/order/confirm/<%= order.id %>">Confirm this</a>
           <% end %>
         </ul>
+		<%end%>
     <% end %>
 
     <% if @can_write_review %>
@@ -100,6 +102,13 @@
             </span>
         </ul>
     <% end %>
-
+	
+	<% if @item.user == current_user %>
+        <ul class="pageitem">
+            <span class="name">
+      		    <%= link_to 'Edit Item', edit_item_path(@item.id) %>
+            </span>
+        </ul>
+    <% end %>
   </div>
 </div>
