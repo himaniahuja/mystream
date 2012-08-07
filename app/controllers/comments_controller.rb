@@ -31,10 +31,8 @@ class CommentsController < ApplicationController
     if current_user == @item.user
        @comment.receiver_id = @item.confirmed_order.user.id
     else
-       @comment.receiver_id = @item.user
+       @comment.receiver_id = @item.user.id
     end
-
-    #@comment.receiver_id = params[:receiver_id]
 
     if @comment.save
       redirect_to items_path

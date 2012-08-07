@@ -4,9 +4,7 @@
       <%= form_for @comment do |f| %>
           <span class="graytitle">Rating</span>
 
-
           <input type="hidden" name="item_id" value="<%= @item.id %>">
-          <input type="hidden" name="receiver_id" value="<%= @receiver_id %>">
 
           <ul class="pageitem">
             <li class="select">
@@ -30,7 +28,7 @@
           </ul>
       <% end %>
   <% else %>
-      You are not authorized to write reviews !
+      You have already written reviews for this <%= @item.title %> !
 
   <% end %>
 
