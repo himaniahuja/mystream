@@ -6,18 +6,27 @@
           <h3><%= @user.login %></h3>
         </li>
       </div>
-	  <li>
+      <li>
         <i>
           <%= @user.email %>
         </i>
-	  </li>
-	  <li><br/></li>
+      </li>
+      <li><br/></li>
       <li>
         <i>
           <%= @user.get_state %>
         </i>
       </li>
-      
+
+      </br>
+      <% if !@user.interests.blank? %>
+          <li>
+            <b>Interested in </b>
+            <br/>
+            <%= @user.interests %>
+          </li>
+          </br>
+      <% end %>
 
       </br>
     </ul>

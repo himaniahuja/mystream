@@ -8,6 +8,7 @@
 			<li class="smallfield"><span class="name">New Password</span><%= f.password_field :password %><br />
 			<li class="smallfield"><span class="name">Confirmation</span><%= f.password_field :password_confirmation %><br />
 			<li class="smallfield"><span class="name">Home Address</span><%= f.text_field :address %><br />
+			<li class="smallfield"><span class="name">Interests</span><%= f.text_field :interests %><br />
 			<li class="button"><%= f.submit "Update" %></li>
 			<li class="button"><%= link_to 'Discard changes', @user%></li>
 			<li class="textbox"><%= f.error_messages %></li>

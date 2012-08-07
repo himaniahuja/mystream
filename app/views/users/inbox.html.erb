@@ -14,6 +14,7 @@
             <% end %>
             <% @messagesUnread.each do |m| %>
                 <ul class="pageitem">
+                  <div class="unRead">
                   <a href='<%= show_message_path(m.id) %>'>
 
                     <div class="bigText">
@@ -30,6 +31,7 @@
                     </div>
 
                   </a>
+                 </div>
                 </ul>
             <% end %>
         <% end %>

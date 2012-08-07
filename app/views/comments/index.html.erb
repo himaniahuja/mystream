@@ -11,9 +11,10 @@
     <% if @comment_Hash.empty? %>
         <h4>There are no comments for this user. </h4>
     <% else %>
+
         <% @comment_Hash.each do |c, s| %>
             <ul class="pageitem">
-
+              <div class= "unRead">
               <div class="bigText">
                 <%= s.login %>  said .....
               </div>
@@ -28,9 +29,10 @@
               <div class="lightText">
                 <%= c.created_at.strftime("%B %d %Y (%a)") %>
               </div>
-
+              </div>
             </ul>
         <% end %>
+
     <% end %>
   </div>
 </div>

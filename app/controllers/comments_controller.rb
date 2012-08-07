@@ -4,6 +4,16 @@ class CommentsController < ApplicationController
   def new
 
     @item = Item.find(params[:format])
+
+    @can_write = false
+    if @item.confirmed_order
+        @confirmed_order =  @item.confirmed_order
+        @sender = @confirmed_order.user
+        if (@sender  == current_user)  ||  (@item.user == current_user)
+           @can_write = true
+        end
+    end
+
     @receiver_id = @item.user_id
     @comment = Comment.new
 
@@ -14,7 +24,15 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.item_id = params[:item_id]
     @comment.owner_id = current_user.id
-    @comment.receiver_id = params[:receiver_id]
+    @item = Item.find(params[:item_id])
+
+    if current_user == @item.user
+       @comment.receiver_id = @item.confirmed_order.user.id
+    else
+       @comment.receiver_id = @item.user
+    end
+
+    #@comment.receiver_id = params[:receiver_id]
 
     if @comment.save
       redirect_to items_path

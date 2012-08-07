@@ -149,11 +149,13 @@ class UsersController < ApplicationController
     @message = current_user.messages.with_id(params[:id]).first
     @recipient_id = @message.sent_messageable_id
     @recipient = User.find(@recipient_id)
+    @newBodies = @message.body.split("-------------------")
+    @newBody = @newBodies[0] + @newBodies[1]
 
     @topic = "#{@message.topic}"
     @body = "\n\n\n\n\n\n--------------------------------------------\n\nOn " +
         @message.created_at.strftime("%B %d %Y (%a)") + " " +
-        @recipient.login + " wrote :  \n " + @message.body
+        @recipient.login + " wrote :  \n " + @newBody
 
   end
 

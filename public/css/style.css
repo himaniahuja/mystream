@@ -64,6 +64,14 @@ a{
 
 }
 
+
+.unRead{
+
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-color: #000000;
+}
+
 .read{
 
     background-color: #c0c0c0;

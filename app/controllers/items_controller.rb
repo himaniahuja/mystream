@@ -59,6 +59,10 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    @can_write_review = false
+    if @item.confirmed_order
+      @can_write_review = true
+    end
     @order = Order.new
   end
 

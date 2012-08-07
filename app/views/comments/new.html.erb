@@ -1,11 +1,6 @@
 <div id="content">
-  <% if @item.confirmed_order_id.nil? %>
+  <% if @can_write %>
 
-      You are not authorized to write reviews !
-      <br/>
-      Only after you confirm the order you can write reviews.
-
-  <% else %>
       <%= form_for @comment do |f| %>
           <span class="graytitle">Rating</span>
 
@@ -34,5 +29,13 @@
             </li>
           </ul>
       <% end %>
+  <% else %>
+      You are not authorized to write reviews !
+      <br/>
+      Only after you confirm the order you can write reviews.
+
+
   <% end %>
+
+
 </div>
