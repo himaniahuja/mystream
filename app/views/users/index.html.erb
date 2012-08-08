@@ -16,6 +16,9 @@
       <li>
         <i><%= @user.get_state %></i>
       </li>
+	  <li>
+		<i>Average Rating: <%= @user.average_rating %></i>
+	  </li>
       </br>
       <% if !@user.interests.blank? %>
           <li>
@@ -35,10 +38,6 @@
 
     <ul class="pageitem">
       <span class="name"><%= link_to 'Edit Profile', edit_user_path(@user) %></span>
-    </ul>
-
-    <ul class="pageitem">
-      <span class="name"><a href="/logout">Logout</a></span>
     </ul>
 
   </div>

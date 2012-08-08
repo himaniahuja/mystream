@@ -18,4 +18,19 @@ class User < ActiveRecord::Base
     end
     return guess.join(" , ")
   end
+
+  def average_rating
+    comments = Comment.find(:all, :conditions=>['receiver_id=?', self.id])
+     
+    sum = 0
+    comments.each do |comment|
+      sum += comment.rating
+    end
+    if comments.length == 0
+      return "N/A"
+    else
+      return sprintf("%0.1f", "#{sum.to_f/comments.length}")
+    end
+  end
+  
 end

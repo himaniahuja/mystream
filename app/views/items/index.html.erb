@@ -14,7 +14,7 @@ $("body").addClass('applist')
 			<% end %>
 			</span>
 		<span class="name"><%= item.title%></span>
-		<span class="stars4"></span>
+		<span class="stars<%=6-item.condition%>"></span>
 		<span class="starcomment">Last Updated: <%= item.updated_at %></span>
 		<span class="arrow"></span><span class="price">$<%= item.rental_price %></span></a></li>
 	<% end %>
@@ -52,7 +52,7 @@ $("body").addClass('applist')
 		<% end %>
         <li class="fielditem">
 	      <span class="fielddesc">Rank By</span> 
-		  <%= select_tag(:rank_by, options_for_select(['updated_at desc', 'rental_price', 'distance'], params[:rank_by])) %>
+		  <%= select_tag(:rank_by, options_for_select([['Recently Update', 'updated_at desc'], ['Rental Price', 'rental_price'], ['Distance', 'distance']], params[:rank_by])) %>
 		</li>
 		<li class="fielditem">
 	      <span class="fielddesc">Search Category</span>

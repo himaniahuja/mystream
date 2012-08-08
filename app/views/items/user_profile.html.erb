@@ -17,6 +17,12 @@
           <%= @user.get_state %>
         </i>
       </li>
+	</br>
+	<li>
+        <i>
+          Review score:<%= @user.average_rating %>
+        </i>
+      </li>
 
       </br>
       <% if !@user.interests.blank? %>
