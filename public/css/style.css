@@ -190,5 +190,27 @@ list-style: none;
 	width: auto;
 }
 
+ .stars0, .stars1, .stars2, .stars3, .stars4, .stars5 {
+width: 65px;
+height: 18px;
+display: block!important;
+margin: 0 auto;
+}
+
+.stars5 {
+	background: url('../images/5stars.png');
+}
+.stars4 {
+	background: url('../images/4stars.png');
+}
+.stars3 {
+	background: url('../images/3stars.png');
+}
+.stars2 {
+	background: url('../images/2stars.png');
+}
+.stars1 {
+	background: url('../images/1stars.png');
+}
 
 

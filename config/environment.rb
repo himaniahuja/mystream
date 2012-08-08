@@ -8,6 +8,12 @@ Ishare::Application.initialize!
 Thread.new {
   while 1
     Item.all.each do |item|
+      if not item.expire
+        next
+      end
+
+      puts "processing " + item.expire.to_s
+      
       if Time.now > item.created_at + item.expire * 60
         # send messages to all people who placed an order
         title = "We are sorry..."

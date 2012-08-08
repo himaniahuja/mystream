@@ -6,6 +6,11 @@
           <h3><%= @user.login %></h3>
         </li>
       </div>
+	<li>
+        <i>
+			<span class="stars<%=@user.average_rating%>"></span>
+        </i>
+      </li>
       <li>
         <i>
           <%= @user.email %>
@@ -18,11 +23,7 @@
         </i>
       </li>
 	</br>
-	<li>
-        <i>
-          Review score:<%= @user.average_rating %>
-        </i>
-      </li>
+
 
       </br>
       <% if !@user.interests.blank? %>

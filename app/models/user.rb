@@ -27,9 +27,9 @@ class User < ActiveRecord::Base
       sum += comment.rating
     end
     if comments.length == 0
-      return "N/A"
+      return 0
     else
-      return sprintf("%0.1f", "#{sum.to_f/comments.length}")
+      return sum /comments.length
     end
   end
   

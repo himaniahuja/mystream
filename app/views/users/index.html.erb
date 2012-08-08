@@ -10,15 +10,15 @@
         </li>
       </div>
       <li>
+		<span class="stars<%=@user.average_rating%>"></span>
+	  </li>
+      <li>
         <i><%= @user.email %></i>
       </li>
       </br>
       <li>
         <i><%= @user.get_state %></i>
       </li>
-	  <li>
-		<i>Average Rating: <%= @user.average_rating %></i>
-	  </li>
       </br>
       <% if !@user.interests.blank? %>
           <li>
