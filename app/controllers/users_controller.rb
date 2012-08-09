@@ -150,7 +150,15 @@ class UsersController < ApplicationController
     @recipient_id = @message.sent_messageable_id
     @recipient = User.find(@recipient_id)
     @newBodies = @message.body.split("-------------------")
-    @newBody = @newBodies[0] + @newBodies[1]
+    @newBody = " "
+
+    if @newBodies
+      @newBodies.each_with_index do |n, i|
+        if i < 3
+          @newBody += n
+        end
+      end
+    end
 
     @topic = "#{@message.topic}"
     @body = "\n\n\n\n\n\n--------------------------------------------\n\nOn " +
