@@ -18,7 +18,6 @@ $(function() {
                   {"Jet Ski / Watercraft" => 1, "ATV / UTV" => 2, "RV / Trailer" => 3, "Snow Mobile" => 4,
                    "Canoe / Kayak" =>5, "Golf Cart" => 6,"Scooter / Dirt Bike" =>7,"Light Weight Boat" => 8},
   			 	:selected => @item[:category]) %>
- 			<%= f.select :category, options_for_select(get_categories, :selected => @item[:category]) %>
         </li>
   	</ul>
  	<span class="graytitle">Condition</span>

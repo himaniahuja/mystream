@@ -51,6 +51,7 @@ class UsersController < ApplicationController
   end
   
   def dashboard
+
     messages = current_user.received_messages
     @numberOfUnreadMessages = 0
     messages.each do |m|
@@ -60,6 +61,13 @@ class UsersController < ApplicationController
         end
       end
     end
+
+    items = Item.where("confirmed_order_id > ? AND user_id = ?", 0, current_user.id).all
+    @numberOfConfirmedItems = 0
+    if items
+      @numberOfConfirmedItems = items.count
+    end
+
   end
 
   def inbox

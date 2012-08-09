@@ -88,7 +88,7 @@
         <%if @item.orders.length > 0%>
 		<ul class="pageitem">
           <% for order in @item.orders %>
-              <li>From: <%= order.rent_from %> to: <%= order.rent_to %> by <%= order.user.login %>
+              <li>From: <%= order.rent_from %> to: <%= order.rent_to %> by <%= link_to order.user.login, user_profile_path(order.user.id) %>
                 <br/><a href="/order/confirm/<%= order.id %>">Confirm this</a>
           <% end %>
         </ul>
