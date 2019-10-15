@@ -36,5 +36,5 @@ end
 gem 'authlogic'
 gem 'dynamic_form'
 gem 'simple_enum'
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 4.2"
 gem 'gmaps4rails'
